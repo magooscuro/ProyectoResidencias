@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Requests\StoreCategoryPost;
-use App\Category;
+use App\ModelosFormulario\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

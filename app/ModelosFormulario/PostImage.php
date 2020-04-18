@@ -1,7 +1,7 @@
 <?php
 
-namespace App;
-use App\Post;
+namespace App\ModelosFormulario;
+use App\ModelosFormulario\Post;
 use Illuminate\Database\Eloquent\Model;
 
 class PostImage extends Model

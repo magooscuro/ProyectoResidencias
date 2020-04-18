@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\dashboard;
 
-use App\PostImage;
-use App\Post; //modelo
+use App\ModelosFormulario\PostImage;
+use App\ModelosFormulario\Post; //modelo
 use App\Http\Controllers\Controller; //controladores generales
 use Illuminate\Http\Request; 
 use App\Http\Requests\StorePostPost; //store
-use App\Category; //modelo 
+use App\ModelosFormulario\Category; //modelo 
 
 class PostController extends Controller
 {

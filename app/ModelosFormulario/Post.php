@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\ModelosFormulario;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Category;
-use App\PostImage;
+use App\ModelosFormulario\Category;
+use App\ModelosFormulario\PostImage;
 
 class Post extends Model
 {

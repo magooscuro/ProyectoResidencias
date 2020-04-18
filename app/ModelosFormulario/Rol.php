@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\ModelosFormulario;
 
 use Illuminate\Database\Eloquent\Model;
 

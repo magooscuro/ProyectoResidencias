@@ -5,7 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserPost;
-use \App\User;
+use App\ModelosFormulario\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateUserPut;
 
