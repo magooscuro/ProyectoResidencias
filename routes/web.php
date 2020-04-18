@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,5 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+})->name("home");
+
+
+Route::resource('dashboard/post', 'dashboard\PostController');
+Route::post('dashboard/post/{post}/image', 'dashboard\PostController@image')->name('post.image'); //simplemente estoy separando el metodo y creando otro idependiente para la image del update de post controller
+
+
+Route::resource('dashboard/category', 'dashboard\CategoryController');
+Route::resource('dashboard/user', 'dashboard\UserController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'inicioController@index');

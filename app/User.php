@@ -1,6 +1,7 @@
 <?php
 
-namespace App\ModelosFormulario;
+namespace App;
+
 use App\ModelosFormulario\Rol; //agregando la funcion 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
