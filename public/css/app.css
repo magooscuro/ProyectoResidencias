@@ -10882,3 +10882,15 @@ a.text-dark:focus {
   }
 }
 
+.bg-dark {
+  background-color: #00838f !important;
+}
+
+.bg-dark2 {
+  background-color: #006972;
+}
+
+.logo_200 {
+  width: 200px;
+}
+
