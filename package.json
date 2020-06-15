@@ -13,7 +13,11 @@
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
         "cross-env": "^5.1",
-        "jquery": "^3.2",
+<<<<<<< HEAD
+        "jquery": "^3.5.1",
+=======
+        "jquery": "^3.5",
+>>>>>>> a2f407951232095bbaab080bfef6306c85688e55
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
         "popper.js": "^1.12",
@@ -21,6 +25,12 @@
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
+        "vue-router": "^3.3.1",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^18.0.0",
+        "vue-bootstrap-pagination": "^2.10.3",
+        "vue-plain-pagination": "^0.3.0"
     }
 }

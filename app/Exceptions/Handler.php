@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponse;
+
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -50,6 +52,29 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+          //aqui mando la respuesta dependiendo el tipo de exepcion mandado un json
+       // echo "hola Mundo";
+
+
+
+
+
+        if(env('APP_ENV') == 'local'){ //para provar solo lo cambio a production 
+            return parent::render($request, $exception);
+        }
+
+       if ($exception instanceof NotFoundHtppException) {
+        return $this->errorResponse("no se econtro la paguina",$code = 404,$msj='pagina no econtrada');  //implemento mi metodo de error de la clase apiresponse error
+
+       }
+
+       if ($exception instanceof ModelNotFoundException) {
+        return $this->errorResponse("recurso no econtrado",$code = 404,$msj='Recurso no econtrada');  //implemento mi metodo de error de la clase apiresponse error
+
+       }
+
+        
         return parent::render($request, $exception);
     }
 }

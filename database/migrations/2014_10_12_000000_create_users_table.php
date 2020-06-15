@@ -10,12 +10,15 @@ class CreateUsersTable extends Migration
      * Run the migrations.
      *
      * @return void
-     */
+      hace cambios en la base de datos*/
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            //se define  los campos de la tabla con la variable 
+            $table->id();
             $table->string('name');
+            $table->string('rol_id');
+            $table->string('surname');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -28,7 +31,7 @@ class CreateUsersTable extends Migration
      * Reverse the migrations.
      *
      * @return void
-     */
+      elimina esa tabla */
     public function down()
     {
         Schema::dropIfExists('users');
