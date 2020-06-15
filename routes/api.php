@@ -21,3 +21,4 @@ Route::resource('categorias','ApiControllers\categoriasController');
 Route::resource('subcategorias','ApiControllers\subCategoriaController');
 Route::resource('ubicaciones','ApiControllers\ubicacionesController');
 Route::resource('almacenes','ApiControllers\almacenesController');
+Route::resource('unidades','ApiControllers\unidadesController');
