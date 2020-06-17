@@ -28,7 +28,9 @@ Auth::routes();
 
 //---------------------------------------------------------------------------------
 Route::get('/', 'web\WebController@index')->name('index');
-Route::get('/home', 'HomeController@index')->name('home'); // <- por que tambien tnego una que va a home y a la raiz 
+Route::get('/home', 'HomeController@index')->name('home'); // <- por que tambien tnego una que va a home y a la raiz
+
+Route::get('/admin','inicioController@index')->name('index');
 
 
 //Route::get('/', 'inicioController@index');//esta es de juandiego <- la usaras tu o yo ?

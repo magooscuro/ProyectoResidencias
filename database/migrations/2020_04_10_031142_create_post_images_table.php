@@ -14,13 +14,13 @@ class CreatePostImagesTable extends Migration
     public function up()
     {
         Schema::create('post_images', function (Blueprint $table) {
-            $table->id();
-            
+            $table->bigIncrements('id');
+
             $table->bigInteger('post_id');
-            
+
             $table->string('image');
-            
-            
+
+
             $table->timestamps();
         });
     }
