@@ -1,1 +1,0 @@
-@include("theme.admin.layout")

@@ -22,6 +22,7 @@ Route::resource('subcategorias','ApiControllers\subCategoriaController');
 Route::resource('ubicaciones','ApiControllers\ubicacionesController');
 Route::resource('almacenes','ApiControllers\almacenesController');
 Route::resource('unidades','ApiControllers\unidadesController');
+    Route::resource('productos','ApiControllers\productosController');
 
 Route::resource('post', 'api\PostController')->only(['index','show']);//para que solo muestre esas dos rutas que quiero usar
 Route::get('post/{category}/category','api\PostController@category');//para que solo muestre esas dos rutas que quiero usar

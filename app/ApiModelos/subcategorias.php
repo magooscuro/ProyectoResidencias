@@ -12,4 +12,7 @@ class subcategorias extends Model
     public function categorias(){
         return $this->belongsTo('App\ApiModelos\categorias','categoria_id');
     }
+    public function productos(){
+        return $this->hasMany('App\ApiModelos\productos','categoria_id');
+    }
 }

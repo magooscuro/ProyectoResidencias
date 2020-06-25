@@ -4,9 +4,9 @@ namespace App\Http\Controllers\ApiControllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\ApiModelos\categorias;
+use App\ApiModelos\productos;
 
-class categoriasController extends Controller
+class productosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class categoriasController extends Controller
      */
     public function index()
     {
-        $categorias = categorias::all();
-        return $categorias;
+        $productos = productos::all();
+        return $productos;
     }
 
     /**
@@ -37,9 +37,14 @@ class categoriasController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = new categorias();
-        $categoria->categoria = $request->categoria;
-        $categoria->save();
+        $producto = new productos();
+        $producto->producto = $request->producto;
+        $producto->almacen_id = $request->almacen_id;
+        $producto->subcategoria_id = $request->subcategoria_id;
+        $producto->ubicacion_id = $request->ubicacion_id;
+        $producto->unidad_id = $request->unidad_id;
+        $producto->cantidad = $request->cantidad;
+        $producto->save();
     }
 
     /**
@@ -50,8 +55,8 @@ class categoriasController extends Controller
      */
     public function show($id)
     {
-        $categoria = categorias::findOrFail($id);
-        return $categoria;
+        $producto = productos::findOrFail($id);
+        return $producto;
     }
 
     /**
@@ -62,7 +67,7 @@ class categoriasController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -74,12 +79,18 @@ class categoriasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $categoria = categorias::findOrFail($id);
+        $producto = productos::findOrFail($id);
 
-        $categoria->categoria = $request->categoria;
+        $producto->producto = $request->producto;
+        $producto->almacen_id = $request->almacen_id;
+        $producto->subcategoria_id = $request->subcategoria_id;
+        $producto->ubicacion_id = $request->ubicacion_id;
+        $producto->unidad_id = $request->unidad_id;
+        $producto->cantidad = $request->cantidad;
 
-        $categoria->save();
-        return $categoria;
+        $producto->save();
+        return $producto;
+
     }
 
     /**
@@ -90,7 +101,7 @@ class categoriasController extends Controller
      */
     public function destroy($id)
     {
-        $categoria = categorias::destroy($id);
-        return  $categoria;
+        $producto = productos::destroy($id);
+        return $producto;
     }
 }
