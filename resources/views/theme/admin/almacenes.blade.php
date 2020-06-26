@@ -34,7 +34,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Categorias</h1>
+                    <h1>Almacenes</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -59,7 +59,7 @@
                         <table id="tabla" class="table " cellspacing="0" width="100%">
                             <thead >
                             <tr>
-                                <th>Categoria</th>
+                                <th>Almacen</th>
                                 <th>Opciones</th>
                             </tr>
                             </thead>
@@ -84,7 +84,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Categoria</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Almacen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -93,7 +93,7 @@
                 <form>
                     <div class="form-group row">
                         <div class="col">
-                            <input type="text" class="form-control" id="txtCategoria" placeholder="Categoria" autofocus/>
+                            <input type="text" class="form-control" id="txtAlmacen" placeholder="Almacen" autofocus/>
                         </div >
                     </div>
                 </form>
@@ -111,7 +111,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Eliminar">Eliminar Categoria</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Eliminar">Eliminar Almacen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -121,7 +121,7 @@
                 <form>
                     <div class="form-group row">
                         <div class="col">
-                            <label id="lblEliminar">Quiere eliminar la categoria?</label>
+                            <label id="lblEliminar">Quiere eliminar el Almacen?</label>
                         </div >
                     </div>
                 </form>
@@ -138,7 +138,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Editar">Editar Categoria</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Editar">Editar Almacen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -148,7 +148,7 @@
                     <div class="form-group row">
                         <div class="col">
                             <label>Nombre</label>
-                            <input type="text" class="form-control" id="txtECategoria" placeholder="Categoria" autofocus>
+                            <input type="text" class="form-control" id="txtEAlmacen" placeholder="Almacen" autofocus>
                         </div >
                     </div>
                 </form>
@@ -161,9 +161,10 @@
     </div>
 </div>
 
+
 @include("theme/admin/footer")
 
-<script src="{{asset("js/categorias.js.php")}}" ></script>
+<script src="{{asset("js/almacenes.js.php")}}" ></script>
 <script src="{{asset("assets/admin/plugins/datatables/jquery.dataTables.js")}}"></script>
 <script src="{{asset("assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 

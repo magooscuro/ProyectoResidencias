@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview ">
-                    <a href="http://192.168.0.13/FRR/admin/almacenes" class="nav-link">
+                    <a href="{{ action('AdminController\almacenesController@index') }}" class="nav-link">
                         <i class="nav-icon fas fa-warehouse"></i>
                         <p>
                             Almacenes
