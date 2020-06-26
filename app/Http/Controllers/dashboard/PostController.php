@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller; //controladores generales
 use Illuminate\Http\Request; 
 use App\Http\Requests\StorePostPost; //store
 use App\ModelosFormulario\Category; //modelo 
-
+use App\Helpers\CustomUrl;
+use Illuminate\Support\Facades\Validator;
 class PostController extends Controller
 {
     /**
@@ -36,6 +37,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        
         $categories = Category::pluck('id','title');
         return view("dashboard.post.create",['post' => new Post(),'categories' => $categories]); //agrego la vista donde esta mi fomulario
     }
@@ -51,13 +53,34 @@ class PostController extends Controller
     {
             //dd($request->validated());
            
-            echo "Hola si se puedo Store".$request -> title;
-            
-           Post::create($request-> validated()); 
-            //select * from post
-            return back()->with('status','Post Creado con Exito'); //para regresar al formulario y solo envia 
-    }
+           
+         
+            if($request->url_clean == ""){
+                    $urlClean = CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->title),'-',true); //agregando el helper de validacion
+            }else{
+                $urlClean = CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->url_clean),'-',true); //agregando el helper de validacion
+                
+            } 
+            $requestData = $request-> validated();// se clona el reques para inyectar valores ya que de manera direcno no lo permite 
 
+             $requestData['url_clean'] = $urlClean;
+             $validator = Validator::make($requestData,StorePostPost::myRules());
+
+            if ($validator->fails()){ //lo tiene laravel por defecto el cual me iyecta en mi vista y formulario los errores de validacion que en este caso es si el url es unica o no 
+                return redirect('dashboard/post/create')
+                                ->withErrors($validator)
+                                ->withInput();
+            }
+            
+            
+            //echo "Hola si se puedo Store: ".$urlClean;
+            
+          //dd($requestData); 
+           Post::create($requestData); 
+           
+            return back()->with('status','Post Creado con Exito'); //para regresar al formulario y solo envia 
+        }
+    
     /**
      * Display the specified resource.
      *

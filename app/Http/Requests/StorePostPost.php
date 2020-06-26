@@ -11,7 +11,17 @@ class StorePostPost extends FormRequest
      * 
      * @return bool
      */
-    public function authorize()
+     public static function myRules (){ 
+         return [
+        'title' => 'required|min:5|max:255',
+        'url_clean' => 'max:255|unique:posts',
+        'content' => 'required|min:5',
+        'category_id' => 'required',
+        'posted' => 'required'
+    ];
+}
+
+     public function authorize()
     {
         return true;
     }
@@ -23,12 +33,6 @@ class StorePostPost extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => 'required|min:5|max:255',
-            'url_clean' => 'required|min:5|max:255',
-            'content' => 'required|min:5',
-            'category_id' => 'required',
-            'posted' => 'required'
-        ];
+       return $this->myRules();
     }
 }
