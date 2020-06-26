@@ -85,7 +85,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle">Agregar Categoria</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Categoria</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -112,7 +112,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle">Eliminar Categoria</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Eliminar">Eliminar Categoria</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -139,7 +139,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle">Editar Categoria</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Editar">Editar Categoria</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

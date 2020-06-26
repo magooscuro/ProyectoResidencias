@@ -1,11 +1,22 @@
+ '<?php session_start(); ?>'
 
+ $(document).ready(function(){
+    $("#modalAgregar").on('shown.bs.modal', function(){
+        $(this).find('#txtAlmacen').focus();
+    });
+});
+ var token = '<?php echo $_SESSION["token"]; ?>';
  var id=-1;
  $(function () {
 
     var table = $("#tabla").DataTable({
       "ajax":{
-        "url":"http://127.0.0.1:8000/api/categorias",
+        "url":"http://192.168.0.13/ApiRest/public/index.php/api/almacenes",
         "dataSrc":"",
+        "headers": 
+        {
+          "Authorization": "Bearer "+ token
+        },
         error:function(data){
         alert("No hay conexion");
         }
@@ -13,11 +24,11 @@
       },
       "columns":[
         {
-          "data":"categoria"
+          "data":"almacen"
 
         },
       ],
-      rowId:"id",
+      rowId:"id_almacen",
       "columnDefs":[{
         "targets":1,
         "data":null,
@@ -48,19 +59,23 @@
 
     $('#btnAgregar').click(function(){
 
-      var categoria = $("#txtCategoria").val();
+      var almacen = $("#txtAlmacen").val();
 
       var obj ={
-        categoria:categoria,
+        almacen:almacen,
       };
-
+       
       $.ajax({
         type:"POST",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/categorias',
+        url: 'http://192.168.0.13/ApiRest/public/index.php/api/almacenes',
+        "headers": 
+        {
+          "Authorization": "Bearer "+ token
+        },
         ContentType: "application/json",
-        beforeSend:function(){
-          $('#Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+        beforeSend:function(){            
+          $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -68,12 +83,12 @@
           table.draw();
 
           $('#modalAgregar').modal('hide');
-          $('#Agregar').html('Agregar Producto');
+          $('.ModalLongTitle').html('Agregar Producto');
 
-          $("#txtCategoria").val("");
+          $("#txtAlmacen").val("");
         },
         error:function(data){
-        alert("no hay conexion");
+        alert("no hay conexion");  
         }
       }).fail(function($xhr){
          var  data = $xhr.responseJSON;
@@ -81,33 +96,37 @@
     });
 
     $('table').on('click', '#btnEliminarModal', function(){
-      var nombre = table.row($(this).parents('tr')).data().categoria;
+      var nombre = table.row($(this).parents('tr')).data().almacen;
       id = table.row($(this).parents('tr')).id();
-      $('#lblEliminar').html("¿Quiere eliminar la categoria "+nombre+"?");
+      $('#lblEliminar').html("¿Quiere eliminar la almacen "+nombre+"?"); 
     });
 
     $("#btnEliminar").click(function(){
 
       $.ajax({
         type:"Delete",
-        url: 'http://127.0.0.1:8000/api/categorias/'+id,
+        url: 'http://192.168.0.13/ApiRest/public/index.php/api/almacenes/'+id,
+        "headers": 
+        {
+          "Authorization": "Bearer "+ token
+        },
         ContentType: "application/json",
-        beforeSend:function(){
-          $('#Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+        beforeSend:function(){            
+          $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
           table.ajax.reload();
           table.draw();
-
+          
           $('#modalEliminar').modal('hide');
-          $('#Eliminar').html('Eliminar Producto');
+          $('.ModalLongTitle').html('Eliminar Producto');
         },
         error:function(data){
           if(data.status==401){
             alert("La sesion caduco");
             $(location).attr('href','http://192.168.0.13/FRR/login.php')
-          }
+          }  
         }
       }).fail(function($xhr){
          var  data = $xhr.responseJSON;
@@ -120,26 +139,30 @@
       var data = table.row($(this).parents('tr')).data();
       id = table.row($(this).parents('tr')).id();
 
-      var categoria = data.categoria;
+      var almacen = data.almacen;
 
-      $("#txtECategoria").val(categoria);
+      $("#txtEAlmacen").val(almacen);
 
     });
 
     $('#btnActualizar').click(function(){
-      var categoria = $("#txtECategoria").val();
+      var almacen = $("#txtEAlmacen").val();
 
       var obj ={
-        categoria:categoria
+        almacen:almacen
       };
-
+       
       $.ajax({
         type:"PUT",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/categorias/'+id,
+        url: 'http://192.168.0.13/ApiRest/public/index.php/api/almacenes/'+id,
         ContentType: "application/json",
-        beforeSend:function(){
-          $('#Editar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+        "headers": 
+        {
+          "Authorization": "Bearer "+ token
+        },
+        beforeSend:function(){            
+          $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -147,13 +170,13 @@
           table.draw();
 
           $('#modalEditar').modal('hide');
-          $('#Editar').html('Actualizar Producto');
+          $('.ModalLongTitle').html('Actualizar Producto');
 
-          $("#txtECategoria").val("");
+          $("#txtEAlmacen").val("");
 
         },
         error:function(data){
-        alert("no hay conexion");
+        alert("no hay conexion");  
         }
       }).fail(function($xhr){
          var  data = $xhr.responseJSON;

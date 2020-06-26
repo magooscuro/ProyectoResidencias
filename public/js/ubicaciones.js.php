@@ -1,11 +1,22 @@
+ '<?php session_start(); ?>'
 
+ $(document).ready(function(){
+    $("#modalAgregar").on('shown.bs.modal', function(){
+        $(this).find('#txtUbicacion').focus();
+    });
+});
+ var token = '<?php echo $_SESSION["token"]; ?>';
  var id=-1;
  $(function () {
 
     var table = $("#tabla").DataTable({
       "ajax":{
-        "url":"http://127.0.0.1:8000/api/categorias",
+        "url":"http://192.168.0.13/ApiRest/public/index.php/api/ubicaciones",
         "dataSrc":"",
+        "headers": 
+        {
+          "Authorization": "Bearer "+ token
+        },
         error:function(data){
         alert("No hay conexion");
         }
@@ -13,13 +24,17 @@
       },
       "columns":[
         {
-          "data":"categoria"
+          "data":"anaquel"
+
+        },
+        {
+          "data":"nivel"
 
         },
       ],
-      rowId:"id",
+      rowId:"id_ubicacion",
       "columnDefs":[{
-        "targets":1,
+        "targets":2,
         "data":null,
         "defaultContent":"<button type='button' id='btnDetalleModal' class='btn btn-info' title='Ver'><i class='fas fa-eye'></i></button>"+
         "<button type='button' id='btnEditarModal' class='btn btn-warning' title='Editar' data-toggle='modal' data-target='#modalEditar'><i class='fas fa-edit'></i></button>"+
@@ -48,19 +63,25 @@
 
     $('#btnAgregar').click(function(){
 
-      var categoria = $("#txtCategoria").val();
+      var anaquel = $("#txtAnaquel").val();
+      var nivel = $("#txtNivel").val();
 
       var obj ={
-        categoria:categoria,
+        anaquel:anaquel,
+        nivel:nivel,
       };
-
+       
       $.ajax({
         type:"POST",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/categorias',
+        url: 'http://192.168.0.13/ApiRest/public/index.php/api/ubicaciones',
+        "headers": 
+        {
+          "Authorization": "Bearer "+ token
+        },
         ContentType: "application/json",
-        beforeSend:function(){
-          $('#Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+        beforeSend:function(){            
+          $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -68,12 +89,13 @@
           table.draw();
 
           $('#modalAgregar').modal('hide');
-          $('#Agregar').html('Agregar Producto');
+          $('.ModalLongTitle').html('Agregar Producto');
 
-          $("#txtCategoria").val("");
+          $("#txtNivel").val("");
+          $("#txtAnaquel").val("");
         },
         error:function(data){
-        alert("no hay conexion");
+        alert("no hay conexion");  
         }
       }).fail(function($xhr){
          var  data = $xhr.responseJSON;
@@ -81,33 +103,38 @@
     });
 
     $('table').on('click', '#btnEliminarModal', function(){
-      var nombre = table.row($(this).parents('tr')).data().categoria;
+      var nivel = table.row($(this).parents('tr')).data().nivel;
+      var anaquel = table.row($(this).parents('tr')).data().anaquel;
       id = table.row($(this).parents('tr')).id();
-      $('#lblEliminar').html("¿Quiere eliminar la categoria "+nombre+"?");
+      $('#lblEliminar').html("¿Quiere eliminar la ubicacion del anaquel "+anaquel+" y nivel "+ nivel+"?"); 
     });
 
     $("#btnEliminar").click(function(){
 
       $.ajax({
         type:"Delete",
-        url: 'http://127.0.0.1:8000/api/categorias/'+id,
+        url: 'http://192.168.0.13/ApiRest/public/index.php/api/ubicaciones/'+id,
+        "headers": 
+        {
+          "Authorization": "Bearer "+ token
+        },
         ContentType: "application/json",
-        beforeSend:function(){
-          $('#Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+        beforeSend:function(){            
+          $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
           table.ajax.reload();
           table.draw();
-
+          
           $('#modalEliminar').modal('hide');
-          $('#Eliminar').html('Eliminar Producto');
+          $('.ModalLongTitle').html('Eliminar Producto');
         },
         error:function(data){
           if(data.status==401){
             alert("La sesion caduco");
             $(location).attr('href','http://192.168.0.13/FRR/login.php')
-          }
+          }  
         }
       }).fail(function($xhr){
          var  data = $xhr.responseJSON;
@@ -120,26 +147,34 @@
       var data = table.row($(this).parents('tr')).data();
       id = table.row($(this).parents('tr')).id();
 
-      var categoria = data.categoria;
+      var anaquel = data.anaquel;
+      var nivel = data.nivel;
 
-      $("#txtECategoria").val(categoria);
+      $("#txtEAnaquel").val(anaquel);
+      $("#txtENivel").val(nivel);
 
     });
 
     $('#btnActualizar').click(function(){
-      var categoria = $("#txtECategoria").val();
+      var anaquel = $("#txtEAnaquel").val();
+      var nivel = $("#txtENivel").val();
 
       var obj ={
-        categoria:categoria
+        anaquel:anaquel,
+        nivel:nivel
       };
-
+       
       $.ajax({
         type:"PUT",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/categorias/'+id,
+        url: 'http://192.168.0.13/ApiRest/public/index.php/api/ubicaciones/'+id,
         ContentType: "application/json",
-        beforeSend:function(){
-          $('#Editar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+        "headers": 
+        {
+          "Authorization": "Bearer "+ token
+        },
+        beforeSend:function(){            
+          $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -147,13 +182,13 @@
           table.draw();
 
           $('#modalEditar').modal('hide');
-          $('#Editar').html('Actualizar Producto');
+          $('.ModalLongTitle').html('Actualizar Producto');
 
-          $("#txtECategoria").val("");
+          $("#txtEUbicacion").val("");
 
         },
         error:function(data){
-        alert("no hay conexion");
+        alert("no hay conexion");  
         }
       }).fail(function($xhr){
          var  data = $xhr.responseJSON;
