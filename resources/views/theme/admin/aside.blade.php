@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview ">
-                    <a href="http://192.168.0.13/FRR/admin/categorias" class="nav-link">
+                    <a href="{{ action('AdminController\categoriasController@index') }}" class="nav-link">
                         <i class="nav-icon fas fa-swatchbook"></i>
                         <p>
                             Categorias

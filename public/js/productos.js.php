@@ -89,7 +89,7 @@ $(function () {
             url: 'http://127.0.0.1:8000/api/productos',
             ContentType: "application/json",
             beforeSend:function(){
-                $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                $('.Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
             },
             success:function(data){
                 console.log(data);
@@ -97,7 +97,7 @@ $(function () {
                 table.draw();
 
                 $('#modalAgregar').modal('hide');
-                $('.ModalLongTitle').html('Agregar Producto');
+                $('#Agregar').html('Agregar producto');
 
                 $("#txtProducto").val("");
                 $("#txtAlmacen").val("");
@@ -128,7 +128,7 @@ $(function () {
             url: 'http://127.0.0.1:8000/api/productos/'+id,
             ContentType: "application/json",
             beforeSend:function(){
-                $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                $('.Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
             },
             success:function(data){
                 console.log(data);
@@ -136,7 +136,7 @@ $(function () {
                 table.draw();
 
                 $('#modalEliminar').modal('hide');
-                $('.ModalLongTitle').html('Eliminar Producto');
+                $('#Eliminar').html('Eliminar Producto');
             },
             error:function(data){
                 if(data.status==401){
@@ -194,7 +194,7 @@ $(function () {
             url: 'http://127.0.0.1:8000/api/productos/'+id,
             ContentType: "application/json",
             beforeSend:function(){
-                $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                $('.Actualizar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
             },
             success:function(data){
                 console.log(data);
@@ -202,7 +202,7 @@ $(function () {
                 table.draw();
 
                 $('#modalEditar').modal('hide');
-                $('.ModalLongTitle').html('Actualizar Producto');
+                $('#Actualizar').html('Actualizar Producto');
 
                 $("#txtEProducto").val("");
                 $("#txtEAlmacen").val("");

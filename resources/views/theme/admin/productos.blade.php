@@ -90,7 +90,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="col-12 modal-title text-center ModalLongTitle">Agregar Producto</h5>
+                    <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -136,7 +136,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="col-12 modal-title text-center ModalLongTitle">Eliminar Producto</h5>
+                    <h5 class="col-12 modal-title text-center ModalLongTitle" id="Eliminar">Eliminar Producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -163,7 +163,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="col-12 modal-title text-center ModalLongTitle">Editar Producto</h5>
+                    <h5 class="col-12 modal-title text-center ModalLongTitle" id="Actualizar">Editar Producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -213,9 +213,9 @@
 
 @include("theme/admin/footer")
 
-    <script src="{{asset("js/productos.js.php")}}" ></script>
-    <script src="{{asset("assets/admin/plugins/datatables/jquery.dataTables.js")}}"></script>
-    <script src="{{asset("assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
+<script src="{{asset("js/productos.js.php")}}" ></script>
+<script src="{{asset("assets/admin/plugins/datatables/jquery.dataTables.js")}}"></script>
+<script src="{{asset("assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 
 </body>
 </html>
