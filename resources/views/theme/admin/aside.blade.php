@@ -25,7 +25,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview ">
-                    <a href="http://192.168.0.13/FRR/admin/productos" class="nav-link">
+                    <a href="{{ action('AdminController\productosController@index') }}" class="nav-link">
                         <i class="nav-icon fas fa-boxes"></i>
                         <p>
                             Productos

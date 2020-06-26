@@ -3,7 +3,7 @@ $(function () {
 
     var table = $("#tabla").DataTable({
         "ajax":{
-            "url":"http://127.0.0.1:8000/api/categorias",
+            "url":"http://127.0.0.1:8000/api/productos",
             "dataSrc":"",
             error:function(data){
                 alert("No hay conexion");
@@ -12,7 +12,7 @@ $(function () {
         },
         "columns":[
             {
-                "data":"categoria"
+                "data":"producto"
 
             },
             {
@@ -36,7 +36,7 @@ $(function () {
 
             }
         ],
-        rowId:"id_producto",
+        rowId:"id",
         "columnDefs":[{
             "targets":6,
             "data":null,
@@ -86,11 +86,7 @@ $(function () {
         $.ajax({
             type:"POST",
             data: obj,
-            url: 'http://192.168.0.13/ApiRest/public/index.php/api/productos',
-            "headers":
-                {
-                    "Authorization": "Bearer "+ token
-                },
+            url: 'http://127.0.0.1:8000/api/productos',
             ContentType: "application/json",
             beforeSend:function(){
                 $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
@@ -121,6 +117,7 @@ $(function () {
     $('table').on('click', '#btnEliminarModal', function(){
         var nombre = table.row($(this).parents('tr')).data().producto;
         id = table.row($(this).parents('tr')).id();
+        console.log(id);
         $('#lblEliminar').html("¿Quiere eliminar el producto "+nombre+"?");
     });
 
@@ -128,11 +125,7 @@ $(function () {
 
         $.ajax({
             type:"Delete",
-            url: 'http://192.168.0.13/ApiRest/public/index.php/api/productos/'+id,
-            "headers":
-                {
-                    "Authorization": "Bearer "+ token
-                },
+            url: 'http://127.0.0.1:8000/api/productos/'+id,
             ContentType: "application/json",
             beforeSend:function(){
                 $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
@@ -198,12 +191,8 @@ $(function () {
         $.ajax({
             type:"PUT",
             data: obj,
-            url: 'http://192.168.0.13/ApiRest/public/index.php/api/productos/'+id,
+            url: 'http://127.0.0.1:8000/api/productos/'+id,
             ContentType: "application/json",
-            "headers":
-                {
-                    "Authorization": "Bearer "+ token
-                },
             beforeSend:function(){
                 $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
             },
@@ -223,7 +212,7 @@ $(function () {
                 $("#txtECantidad").val("");
             },
             error:function(data){
-                alert("no hay conexion");
+                alert("no hay conexion gg");
             }
         }).fail(function($xhr){
             var  data = $xhr.responseJSON;
