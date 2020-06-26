@@ -1,22 +1,11 @@
- '<?php session_start(); ?>'
 
- $(document).ready(function(){
-    $("#modalAgregar").on('shown.bs.modal', function(){
-        $(this).find('#txtUbicacion').focus();
-    });
-});
- var token = '<?php echo $_SESSION["token"]; ?>';
  var id=-1;
  $(function () {
 
     var table = $("#tabla").DataTable({
       "ajax":{
-        "url":"http://192.168.0.13/ApiRest/public/index.php/api/ubicaciones",
+        "url":"http://127.0.0.1:8000/api/ubicaciones",
         "dataSrc":"",
-        "headers": 
-        {
-          "Authorization": "Bearer "+ token
-        },
         error:function(data){
         alert("No hay conexion");
         }
@@ -32,7 +21,7 @@
 
         },
       ],
-      rowId:"id_ubicacion",
+      rowId:"id",
       "columnDefs":[{
         "targets":2,
         "data":null,
@@ -70,18 +59,14 @@
         anaquel:anaquel,
         nivel:nivel,
       };
-       
+
       $.ajax({
         type:"POST",
         data: obj,
-        url: 'http://192.168.0.13/ApiRest/public/index.php/api/ubicaciones',
-        "headers": 
-        {
-          "Authorization": "Bearer "+ token
-        },
+        url: 'http://127.0.0.1:8000/api/ubicaciones',
         ContentType: "application/json",
-        beforeSend:function(){            
-          $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+        beforeSend:function(){
+          $('#Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -89,13 +74,13 @@
           table.draw();
 
           $('#modalAgregar').modal('hide');
-          $('.ModalLongTitle').html('Agregar Producto');
+          $('#Agregar').html('Agregar Producto');
 
           $("#txtNivel").val("");
           $("#txtAnaquel").val("");
         },
         error:function(data){
-        alert("no hay conexion");  
+        alert("no hay conexion");
         }
       }).fail(function($xhr){
          var  data = $xhr.responseJSON;
@@ -106,35 +91,31 @@
       var nivel = table.row($(this).parents('tr')).data().nivel;
       var anaquel = table.row($(this).parents('tr')).data().anaquel;
       id = table.row($(this).parents('tr')).id();
-      $('#lblEliminar').html("¿Quiere eliminar la ubicacion del anaquel "+anaquel+" y nivel "+ nivel+"?"); 
+      $('#lblEliminar').html("¿Quiere eliminar la ubicacion del anaquel "+anaquel+" y nivel "+ nivel+"?");
     });
 
     $("#btnEliminar").click(function(){
 
       $.ajax({
         type:"Delete",
-        url: 'http://192.168.0.13/ApiRest/public/index.php/api/ubicaciones/'+id,
-        "headers": 
-        {
-          "Authorization": "Bearer "+ token
-        },
+        url: 'http://127.0.0.1:8000/api/ubicaciones/'+id,
         ContentType: "application/json",
-        beforeSend:function(){            
-          $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+        beforeSend:function(){
+          $('#Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
           table.ajax.reload();
           table.draw();
-          
+
           $('#modalEliminar').modal('hide');
-          $('.ModalLongTitle').html('Eliminar Producto');
+          $('#Eliminar').html('Eliminar Producto');
         },
         error:function(data){
           if(data.status==401){
             alert("La sesion caduco");
             $(location).attr('href','http://192.168.0.13/FRR/login.php')
-          }  
+          }
         }
       }).fail(function($xhr){
          var  data = $xhr.responseJSON;
@@ -163,18 +144,14 @@
         anaquel:anaquel,
         nivel:nivel
       };
-       
+
       $.ajax({
         type:"PUT",
         data: obj,
-        url: 'http://192.168.0.13/ApiRest/public/index.php/api/ubicaciones/'+id,
+        url: 'http://127.0.0.1:8000/api/ubicaciones/'+id,
         ContentType: "application/json",
-        "headers": 
-        {
-          "Authorization": "Bearer "+ token
-        },
-        beforeSend:function(){            
-          $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+        beforeSend:function(){
+          $('#Editar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -182,13 +159,13 @@
           table.draw();
 
           $('#modalEditar').modal('hide');
-          $('.ModalLongTitle').html('Actualizar Producto');
+          $('#Editar').html('Actualizar Producto');
 
           $("#txtEUbicacion").val("");
 
         },
         error:function(data){
-        alert("no hay conexion");  
+        alert("no hay conexion");
         }
       }).fail(function($xhr){
          var  data = $xhr.responseJSON;

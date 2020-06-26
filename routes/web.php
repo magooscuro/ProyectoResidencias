@@ -34,6 +34,7 @@ Route::get('/admin','inicioController@index');
 Route::get('/admin/productos','AdminController\productosController@index');
 Route::get('/admin/categorias','AdminController\categoriasController@index');
 Route::get('/admin/almacenes','AdminController\almacenesController@index');
+Route::get('/admin/ubicaciones','AdminController\ubicacionesController@index');
 
 
 //Route::get('/', 'inicioController@index');//esta es de juandiego <- la usaras tu o yo ?
