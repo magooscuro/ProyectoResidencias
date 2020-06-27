@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview ">
-                    <a href="http://192.168.0.13/FRR/admin/unidades" class="nav-link">
+                    <a href="{{ action('AdminController\unidadesController@index') }}" class="nav-link">
                         <i class="nav-icon fas fa-ruler-combined"></i>
                         <p>
                             Unidades
