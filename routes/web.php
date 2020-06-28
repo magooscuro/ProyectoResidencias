@@ -24,7 +24,11 @@ Route::get('/post-category/{id}', 'web\WebController@post_category');
 
 Route::get('/contact', 'web\WebController@contact');
 
+//login rutes
+
 Auth::routes();
+
+
 
 //---------------------------------------------------------------------------------
 Route::get('/', 'web\WebController@index')->name('index');
@@ -36,6 +40,7 @@ Route::get('/admin/categorias','AdminController\categoriasController@index');
 Route::get('/admin/almacenes','AdminController\almacenesController@index');
 Route::get('/admin/ubicaciones','AdminController\ubicacionesController@index');
 Route::get('/admin/unidades','AdminController\unidadesController@index');
+Route::get('/login2','auth\Login2Controller@index');
 
 
 //Route::get('/', 'inicioController@index');//esta es de juandiego <- la usaras tu o yo ?

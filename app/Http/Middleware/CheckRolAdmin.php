@@ -15,8 +15,8 @@ class CheckRolAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->rol->key == 'admin') {    //checa si el usuario esta asginado como admin y si lo 
-            //nos regresa un reques si no nos regresa a la raiz 
+        if (auth()->user()->rol->key == 'admin') {    //checa si el usuario esta asginado como admin y si lo
+            //nos regresa un reques si no nos regresa a la raiz
             return $next($request);
         }
        return redirect('/');
