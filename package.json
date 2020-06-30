@@ -13,11 +13,11 @@
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
         "cross-env": "^5.1",
-<<<<<<< HEAD
+
         "jquery": "^3.5.1",
-=======
+
         "jquery": "^3.5",
->>>>>>> a2f407951232095bbaab080bfef6306c85688e55
+
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
         "popper.js": "^1.12",

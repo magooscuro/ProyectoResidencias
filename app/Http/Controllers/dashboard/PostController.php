@@ -6,6 +6,7 @@ use App\ModelosFormulario\PostImage;
 use App\ModelosFormulario\Post; //modelo
 use App\Http\Controllers\Controller; //controladores generales
 use Illuminate\Http\Request; 
+use App\Http\Requests\UpdatePostPut;
 use App\Http\Requests\StorePostPost; //store
 use App\ModelosFormulario\Category; //modelo 
 use App\Helpers\CustomUrl;
@@ -118,9 +119,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostPost $request, Post $post)
+    public function update(UpdatePostPut $request, Post $post)
     {
-        echo "Hola si se puedo update".$request -> title;
+        //echo "Hola si se puedo update".$request -> title;
             
         $post -> update($request-> validated()); 
          //select * from post

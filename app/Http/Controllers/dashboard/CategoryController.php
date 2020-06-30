@@ -5,8 +5,10 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Requests\StoreCategoryPost;
 use App\ModelosFormulario\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateCategoryPut;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
+use App\Helpers\CustomUrl;
 
 class CategoryController extends Controller
 {
@@ -47,14 +49,26 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryPost $request)
     {
-        echo "Hola si se puedo Store".$request -> title;
-            
-        Category::create($request-> validated()); 
-         //select * from post
-         return back()->with('status','Category Creado con Exito'); //para regresar al formulario y solo envia 
- 
-    }
+        // dd($request->validated());
+        if ($request->url_clean == "") {
+            $urlClean = CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->title), '-', true);
+        } else {
+            $urlClean = CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->url_clean), '-', true);
+        }
+        $requestData = $request->validated();
+        $requestData['url_clean'] = $urlClean;
 
+        $validator = Validator::make($requestData, StoreCategoryPost::myRules());
+
+        if ($validator->fails()) {
+            return redirect('dashboard/category/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        Category::create($requestData);
+        return back()->with('status', 'Categoria creado con exito');
+    }
     /**
      * Display the specified resource.
      *
@@ -85,7 +99,7 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreCategoryPost $request, Category $category)
+    public function update(UpdateCategoryPut $request, Category $category)
     {
         echo "Hola si se puedo update".$request -> title;
             

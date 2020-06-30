@@ -21,7 +21,7 @@ class PostController extends ApiResponseController
         join('post_images','post_images.post_id','=','posts.id')->
         join('categories','categories.id','=','posts.category_id')->//haciendo un join imagenes y post y muestre la imagen dependiendo del id coreespondiente con el post , ('talbas',comparativo,'columnas')
         select('posts.*','categories.title as category','post_images.image')->
-        orderBy('posts.created_at', 'desc')->paginate(5); //se hace consulta de los elementos post que solo arroje ciertos campos cdesendentes y paguindaos
+        orderBy('posts.created_at', 'desc')->paginate(10); //se hace consulta de los elementos post que solo arroje ciertos campos cdesendentes y paguindaos
         
         return $this->successResponse($posts);
     }

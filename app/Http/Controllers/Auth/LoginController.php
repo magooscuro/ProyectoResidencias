@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/login';
     //se redireccionara despues del logeo a la carpeta raiz
     /**
      * Create a new controller instance.
@@ -43,9 +43,14 @@ class LoginController extends Controller
     {
         if (auth()->user()->rol->key == 'inventario') {
             return '/admin';
+            
+            
+        }elseif (auth()->user()->rol->key == 'admin') {
+            return '/dashboard/post';
         }
 
-        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/login';
     }
 
     public function logout(Request $request)

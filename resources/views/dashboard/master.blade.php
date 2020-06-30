@@ -3,10 +3,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  
   <meta charset="utf-8">
-  <title>Modulo de Administrador</title>
+  
+  <title>Grupo Razo</title>
+  
   <link rel="stylesheet" href="{{asset("css/app.css")}}">
-  <link rel="stylesheet" >
+  <link rel="icon" href="./favicon.ico">
+  
 
 </head>
 
