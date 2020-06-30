@@ -8,13 +8,11 @@
         <div class="row">
 
             <!-- Grid column -->
-            <div class="col-md-12 py-5">
+            <div class="col-md-12 py-3">
                 <div class="mb-5 flex-center">
 
                     <!-- Facebook -->
-                    <a class="fb-ic">
-                        <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                    </a>
+                   <a class="btn-floating btn-lg btn-fb" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
                     <!-- Twitter -->
                     <a class="tw-ic">
                         <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript">
-    </script>
+    <script type="text/javascript"> </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Log in</title>
+    <title>Grupo Razo</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,13 +12,16 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
+
+<body class="hold-transition login-page" >
 <div class="login-box" style="display:none;">
     <div class="login-logo">
-        <a href="../../index.html"><b>Florencio Razo Razo</b></a>
+       <h1 class="display-3">Grupo Razo</h1>  
+</p>
+        <img src="{{{ asset('images/GRR.png') }}}" width="150" height="150"  class="d-inline-block align-top" alt="">
 
     </div>
-    <!-- /.login-logo -->
+
     <span id="result"></span>
     <div class="card">
         <div class="card-body login-card-body">

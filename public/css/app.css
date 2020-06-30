@@ -4525,6 +4525,7 @@ input[type=button].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+
 }
 
 .navbar .container,
@@ -4717,6 +4718,7 @@ input[type=button].btn-block {
   .navbar-expand-lg > .container-xl {
     padding-right: 0;
     padding-left: 0;
+
     
   }
 }

@@ -6,8 +6,10 @@
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
-
 .bg-dark {
+    background-color: #00838f !important;
+}
+.body {
     background-color: #00838f !important;
 }
 
