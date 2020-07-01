@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 Route::resource('dashboard/post', 'dashboard\PostController');
 Route::post('dashboard/post/{post}/image', 'dashboard\PostController@image')->name('post.image');
 
+Route::post('dashboard/post/content_image', 'dashboard\PostController@contentImage');
+
 Route::resource('dashboard/category', 'dashboard\CategoryController');
 Route::resource('dashboard/user', 'dashboard\UserController');
 

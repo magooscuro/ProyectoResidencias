@@ -49,6 +49,7 @@
   
 
   </div>
+<input type="hidden" id="token" value="{{ csrf_token() }}">
 <input type="submit" value="Enviar" class="btn btn-primary mt-3 mb-3 btn-block">
 
 

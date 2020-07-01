@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use Illuminate\Support\Facades\URL;
 use App\ModelosFormulario\PostImage;
 use App\ModelosFormulario\Post; //modelo
 use App\Http\Controllers\Controller; //controladores generales
@@ -145,6 +146,21 @@ class PostController extends Controller
       
         PostImage::create(['image' => $filename,'post_id' => $post->id]);
         return back()->with('status','Imagen Cargada  con Exito'); //para regresar al formulario y solo envia
+    }
+
+
+    public function contentImage(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|mimes:jpeg,bmp,png|max:10240', //10Mb
+        ]);
+
+        $filename = time() . "." . $request->image->extension();
+
+        $request->image->move(public_path('images_post'), $filename); //si no existe la carpeta este metodo se ecarga de creaarla
+
+        return response()->json(["default" => URL::to('/') . '/images_post/' . $filename]);
+
     }
   
     /**

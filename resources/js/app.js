@@ -8,9 +8,27 @@ require("./bootstrap");
 
 
 import router from './assets/router.js';
+import MyUploadAdapter from './assets/ckeditor/MyUploadAdapter.js'; //importo mi modulo donde contiene la funcion para subir imagen al servidor por el ckeditor
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-ClassicEditor.create(document.querySelector("#content"))
+
+
+// ...
+
+function MyCustomUploadAdapterPlugin( editor ) {
+    editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+        // Configure the URL to the upload script in your back-end here!
+        return new MyUploadAdapter( loader );
+    };
+}
+
+// ...
+
+ 
+
+ClassicEditor.create(document.querySelector("#content"),{
+   extraPlugins: [ MyCustomUploadAdapterPlugin ],
+})
     .then(editor => {})
     .catch(error => {
         console.error(error.stack);
