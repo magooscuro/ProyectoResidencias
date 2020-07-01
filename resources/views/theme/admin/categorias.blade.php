@@ -53,6 +53,7 @@
                         <table id="tabla" class="table " cellspacing="0" width="100%">
                             <thead >
                             <tr>
+                                <th>Subcategoria</th>
                                 <th>Categoria</th>
                                 <th>Opciones</th>
                             </tr>

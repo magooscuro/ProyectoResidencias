@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ApiControllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\ApiModelos\productos;
+use App\ApiModelos\almacenes;
 
 class productosController extends Controller
 {
@@ -15,7 +16,7 @@ class productosController extends Controller
      */
     public function index()
     {
-        $productos = productos::all();
+        $productos = productos::with(['almacenes','subcategoria','ubicacion','unidad'])->get();
         return $productos;
     }
 

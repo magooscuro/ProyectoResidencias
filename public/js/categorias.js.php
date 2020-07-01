@@ -1,10 +1,10 @@
 
  var id=-1;
- $(function () {
+ $(document).ready(function () {
 
     var table = $("#tabla").DataTable({
       "ajax":{
-        "url":"http://127.0.0.1:8000/api/categorias",
+        "url":"http://127.0.0.1:8000/api/subcategorias",
         "dataSrc":"",
         error:function(data){
         alert("No hay conexion");
@@ -12,14 +12,16 @@
 
       },
       "columns":[
-        {
-          "data":"categoria"
-
-        },
+          {
+            "data":"subCategoria"
+          },
+          {
+              "data":"categorias.categoria"
+          }
       ],
       rowId:"id",
       "columnDefs":[{
-        "targets":1,
+        "targets":2,
         "data":null,
         "defaultContent":"<button type='button' id='btnDetalleModal' class='btn btn-info' title='Ver'><i class='fas fa-eye'></i></button>"+
         "<button type='button' id='btnEditarModal' class='btn btn-warning' title='Editar' data-toggle='modal' data-target='#modalEditar'><i class='fas fa-edit'></i></button>"+

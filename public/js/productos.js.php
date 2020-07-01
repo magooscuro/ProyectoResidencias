@@ -16,19 +16,22 @@ $(function () {
 
             },
             {
-                "data":"almacen_id"
+                "data":"almacenes.almacen"
 
             },
             {
-                "data":"subcategoria_id"
+                "data":"subcategoria.subCategoria"
 
             },
             {
-                "data":"ubicacion_id"
+                "data": null, render: function (data, type, row) {
+                    return data.ubicacion.anaquel+"/"+data.ubicacion.nivel
+
+                }
 
             },
             {
-                "data":"unidad_id"
+                "data":"unidad.unidad"
 
             },
             {

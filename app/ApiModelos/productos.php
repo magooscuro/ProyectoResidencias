@@ -9,7 +9,7 @@ class productos extends Model
     protected $table = 'productos';
     protected  $fillable = ['producto','almacen_id','subcategoria_id','ubicacion_id','unidad_id','cantidad'];
 
-    public function almacen()
+    public function almacenes()
     {
         return $this->belongsTo('App\ApiModelos\almacenes','almacen_id');
     }

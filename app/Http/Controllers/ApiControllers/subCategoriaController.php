@@ -16,7 +16,7 @@ class subCategoriaController extends Controller
      */
     public function index()
     {
-        $subcategorias = subcategorias::all();
+        $subcategorias = subcategorias::with('categorias')->get();
         return $subcategorias;
     }
 

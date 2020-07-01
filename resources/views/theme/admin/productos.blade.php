@@ -57,7 +57,9 @@
                                     <th>Producto</th>
                                     <th>Almacen</th>
                                     <th>Subcategoria</th>
-                                    <th>Ubicacion</th>
+                                    <th>Ubicacion<br>
+                                    Anaquel / Nivel
+                                    </th>
                                     <th>Unidad</th>
                                     <th>Cantidad</th>
                                     <th>Opciones</th>
