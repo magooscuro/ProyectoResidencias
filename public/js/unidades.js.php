@@ -67,7 +67,7 @@
           table.draw();
 
           $('#modalAgregar').modal('hide');
-          $('#Agregar').html('Agregar Producto');
+          $('#Agregar').html('Agregar Unidades');
 
           $("#txtUnidad").val("");
         },
@@ -101,7 +101,7 @@
           console.log(id);
 
           $('#modalEliminar').modal('hide');
-          $('#Eliminar').html('Eliminar Producto');
+          $('#Eliminar').html('Eliminar Unidad');
         },
         error:function(data){
           if(data.status==401){
@@ -147,7 +147,7 @@
           table.draw();
 
           $('#modalEditar').modal('hide');
-          $('#Editar').html('Actualizar Producto');
+          $('#Editar').html('Actualizar Unidad');
 
           $("#txtEUnidad").val("");
 

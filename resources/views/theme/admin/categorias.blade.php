@@ -34,7 +34,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Categorias</h1>
+                    <h1>Subcategorias</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -79,7 +79,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Categoria</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Subcategoria</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -88,9 +88,14 @@
                 <form>
                     <div class="form-group row">
                         <div class="col">
-                            <input type="text" class="form-control" id="txtCategoria" placeholder="Categoria" autofocus/>
+                            <input type="text" class="form-control" id="txtsubcategoria" placeholder="Subcategoria" autofocus/>
                         </div >
                     </div>
+                    <div class="form-group Addcategoria">
+                        <label>Categoria</label>
+                        <select  class="form-control" id="Addcategoria"></select>
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -106,7 +111,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Eliminar">Eliminar Categoria</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Eliminar">Eliminar Subcategoria</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -116,7 +121,7 @@
                 <form>
                     <div class="form-group row">
                         <div class="col">
-                            <label id="lblEliminar">Quiere eliminar la categoria?</label>
+                            <label id="lblEliminar">Quiere eliminar la Subcategoria?</label>
                         </div >
                     </div>
                 </form>
@@ -142,9 +147,13 @@
                 <form>
                     <div class="form-group row">
                         <div class="col">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control" id="txtECategoria" placeholder="Categoria" autofocus>
+                            <label>Subcategoria</label>
+                            <input type="text" class="form-control" id="txtEsubcategoria" placeholder="Subcategoria" autofocus/>
                         </div >
+                    </div>
+                    <div class="form-group categoria">
+                        <label>Categoria</label>
+                        <select  class="form-control" id="Scategoria"></select>
                     </div>
                 </form>
             </div>

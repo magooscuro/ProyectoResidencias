@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class subcategorias extends Model
 {
     protected $table='subcategorias';
-    protected $fillable=['subcategoria','categoria_id'];
+    protected $fillable=['subCategoria','categoria_id'];
 
     public function categorias(){
         return $this->belongsTo('App\ApiModelos\categorias','categoria_id');

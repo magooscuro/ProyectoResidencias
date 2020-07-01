@@ -50,16 +50,18 @@
 
     $('#btnAgregar').click(function(){
 
-      var categoria = $("#txtCategoria").val();
+      var subcategoria = $("#txtsubcategoria").val();
+      var categoria = $("#Addcategoria").val();
 
       var obj ={
-        categoria:categoria,
+          subcategoria:subcategoria,
+          categoria_id:categoria
       };
 
       $.ajax({
         type:"POST",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/categorias',
+        url: 'http://127.0.0.1:8000/api/subcategorias',
         ContentType: "application/json",
         beforeSend:function(){
           $('#Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
@@ -70,9 +72,9 @@
           table.draw();
 
           $('#modalAgregar').modal('hide');
-          $('#Agregar').html('Agregar Producto');
+          $('#Agregar').html('Agregar Subcategoria');
 
-          $("#txtCategoria").val("");
+          $("#txtsubcategoria").val("");
         },
         error:function(data){
         alert("no hay conexion");
@@ -83,16 +85,16 @@
     });
 
     $('table').on('click', '#btnEliminarModal', function(){
-      var nombre = table.row($(this).parents('tr')).data().categoria;
+      var nombre = table.row($(this).parents('tr')).data().subCategoria;
       id = table.row($(this).parents('tr')).id();
-      $('#lblEliminar').html("¿Quiere eliminar la categoria "+nombre+"?");
+      $('#lblEliminar').html("¿Quiere eliminar la Subcategoria "+nombre+"?");
     });
 
     $("#btnEliminar").click(function(){
 
       $.ajax({
         type:"Delete",
-        url: 'http://127.0.0.1:8000/api/categorias/'+id,
+        url: 'http://127.0.0.1:8000/api/subcategorias/'+id,
         ContentType: "application/json",
         beforeSend:function(){
           $('#Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
@@ -103,7 +105,7 @@
           table.draw();
 
           $('#modalEliminar').modal('hide');
-          $('#Eliminar').html('Eliminar Producto');
+          $('#Eliminar').html('Eliminar Subcategoria');
         },
         error:function(data){
           if(data.status==401){
@@ -116,40 +118,77 @@
       });
     });
 
+    $("#btnNuevo").click(function () {
+        var categorias = $(".Addcategoria select");
+
+        $.ajax({
+            type:"GET",
+            url:'http://127.0.0.1:8000/api/categorias',
+            ContentType: "application/json",
+            success:function(data) {
+                categorias.find('option').remove();
+                $(data).each(function(i, v){ // indice, valor
+                    categorias.append('<option value="' + v.id + '">' + v.categoria + '</option>');
+                })
+            }
+        });
+    });
 
     $('table').on('click', '#btnEditarModal', function(){
 
       var data = table.row($(this).parents('tr')).data();
       id = table.row($(this).parents('tr')).id();
 
-      var categoria = data.categoria;
+      var subcategoria = data.subCategoria;
+        var categoria_id = data.categoria_id;
 
-      $("#txtECategoria").val(categoria);
+      $("#txtEsubcategoria").val(subcategoria);
+
+      var categorias = $(".categoria select");
+
+      $.ajax({
+         type:"GET",
+          url:'http://127.0.0.1:8000/api/categorias',
+          ContentType: "application/json",
+          success:function(data) {
+             categorias.find('option').remove();
+             $(data).each(function(i, v){ // indice, valor
+                 if(v.id == categoria_id)
+                    categorias.append('<option value="' + v.id + '" selected>' + v.categoria + '</option>');
+                 else
+                    categorias.append('<option value="' + v.id + '">' + v.categoria + '</option>');
+             })
+          },
+          });
 
     });
 
+
     $('#btnActualizar').click(function(){
-      var categoria = $("#txtECategoria").val();
+      var subcategoria = $("#txtEsubcategoria").val();
+      var categoria_id = $("#Scategoria").val();
+
+      console.log(subcategoria);
 
       var obj ={
-        categoria:categoria
+          subcategoria:subcategoria,
+          categoria_id:categoria_id
       };
 
       $.ajax({
         type:"PUT",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/categorias/'+id,
+        url: 'http://127.0.0.1:8000/api/subcategorias/'+id,
         ContentType: "application/json",
         beforeSend:function(){
           $('#Editar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
-          console.log(data);
           table.ajax.reload();
           table.draw();
 
           $('#modalEditar').modal('hide');
-          $('#Editar').html('Actualizar Producto');
+          $('#Editar').html('Actualizar Subcategoria');
 
           $("#txtECategoria").val("");
 

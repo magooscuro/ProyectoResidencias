@@ -74,7 +74,7 @@
           table.draw();
 
           $('#modalAgregar').modal('hide');
-          $('#Agregar').html('Agregar Producto');
+          $('#Agregar').html('Agregar Ubicacion');
 
           $("#txtNivel").val("");
           $("#txtAnaquel").val("");
@@ -109,7 +109,7 @@
           table.draw();
 
           $('#modalEliminar').modal('hide');
-          $('#Eliminar').html('Eliminar Producto');
+          $('#Eliminar').html('Eliminar Ubicacion');
         },
         error:function(data){
           if(data.status==401){
@@ -159,7 +159,7 @@
           table.draw();
 
           $('#modalEditar').modal('hide');
-          $('#Editar').html('Actualizar Producto');
+          $('#Editar').html('Actualizar Ubicacion');
 
           $("#txtEUbicacion").val("");
 
