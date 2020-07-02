@@ -5,9 +5,9 @@
 </a>
 
 
-<table class="table">
+<table class="table table-border table-hover">
   <thead class="thead-dark">
-    <tr>
+    <tr >
       <th scope="col">Id</th>
       <th scope="col">Titulo</th>
       <th scope="col">Categoria</th>
@@ -20,7 +20,7 @@
   <tbody>
    
    @foreach($posts as $post )
-           <tr>
+     <tr class="font-weight-bold text-center">
       <td scope="col">{{$post -> id}}</td>
       <td scope="col">{{$post -> title}}</td>
       <td scope="col">{{$post -> category -> title}}</td>
@@ -30,9 +30,10 @@
       <td scope="col"> 
         <a href="{{route('post.show',$post->id)}}" class="btn btn-primary ">Ver</a>
          <a href="{{route('post.edit',$post->id)}}" class="btn btn-primary ">Actualizar</a>
+         <a href="{{ route('post-comment.post',$post->id) }}" class="btn btn-primary  mt-3 mb-3"><i class="fa fa-comment"></i>Comentarios</a>
         
         
-         <button data-toggle="modal" data-target="#deleteModal" data-id="{{$post ->id}}" class="btn btn-danger ">Eliminar</button>         
+         <button data-toggle="modal" data-target="#deleteModal" data-id="{{$post ->id}}" class="btn btn-block btn-danger ">Eliminar</button>         
        
         
         </td>

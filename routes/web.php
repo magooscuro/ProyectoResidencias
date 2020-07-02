@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('dashboard/post', 'dashboard\PostController');
 Route::post('dashboard/post/{post}/image', 'dashboard\PostController@image')->name('post.image');
+Route::resource('dashboard/contact', 'dashboard\ContactController')->only([
+    'index', 'show', 'destroy',
+]);
+Route::resource('dashboard/post-comment', 'dashboard\PostCommentController')->only([
+    'index', 'show', 'destroy',]);
 
 Route::post('dashboard/post/content_image', 'dashboard\PostController@contentImage');
 
@@ -20,6 +25,7 @@ Route::resource('dashboard/category', 'dashboard\CategoryController');
 Route::resource('dashboard/user', 'dashboard\UserController');
 
 
+Route::get('dashboard/post-comment/{post}/post', 'dashboard\PostCommentController@post')->name('post-comment.post');//ruta de los comentaros por post
 
 Route::get('/detail/{id}', 'web\WebController@detail');
 Route::get('/post-category/{id}', 'web\WebController@post_category');

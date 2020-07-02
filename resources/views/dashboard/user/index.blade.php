@@ -15,10 +15,11 @@
       <th scope="col">Rol</th>
       <th scope="col">Fecha de Creacion</th>
       <th scope="col">Fecha de actualizacion</th>
+      <th scope="col">Acciones</th>
   
     </tr>
   </thead>
-  <tbody>
+  <tbody class="font-weight-bold text-center">
    
    @foreach($users as $user )
            <tr>

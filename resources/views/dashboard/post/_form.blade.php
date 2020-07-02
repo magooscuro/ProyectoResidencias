@@ -1,9 +1,5 @@
 
 
-
-
-
-
 @csrf
 
 <div class="form-group">

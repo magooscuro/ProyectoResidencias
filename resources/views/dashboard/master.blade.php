@@ -6,18 +6,18 @@
   
   <meta charset="utf-8">
   
-  <title>Grupo Razo</title>
+  <title>Modulo Admin</title>
   
   <link rel="stylesheet" href="{{asset("css/app.css")}}">
-  <link rel="icon" href="./favicon.ico">
+  <link rel="icon" href="{{{ asset('images/GRR.png') }}}">
   
 
 </head>
 
-<body>
+<body Style="background-color:#EEEEEE"  >
  @include('dashboard.partials.nav-header-main')
 
-<div class="container"> 
+<div class="container table"> 
 
 @include('dashboard.partials.session-flash-status')
 

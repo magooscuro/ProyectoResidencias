@@ -13,17 +13,18 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
-<body class="hold-transition login-page" >
-<div class="login-box" style="display:none;">
-    <div class="login-logo">
+<body class="hold-transition login-page" Style="background-image:url({{{ asset('images/fondo.gif') }}}); background-size: cover; ">
+
+<div class="login-box text-center" >
+    <div class="login-logo" >
        <h1 class="display-3">Grupo Razo</h1>
         <img src="{{{ asset('images/GRR.png') }}}" width="150" height="150"  class="d-inline-block align-top" alt="">
 
     </div>
 
     <span id="result"></span>
-    <div class="card">
-        <div class="card-body login-card-body">
+    <div class="card" Style="  border: 1px solid; border-color:#cdcdcd; " >
+        <div class="card-body login-card-body" >
             <p class="login-box-msg" id="content">Login</p>
 
             <form method="POST" action="{{ route('login') }}">

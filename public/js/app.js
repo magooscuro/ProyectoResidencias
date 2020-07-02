@@ -38092,7 +38092,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("img", {
         staticClass: "logo_200 mx-auto d-block",
-        attrs: { src: "/images/logo.png", alt: "" }
+        attrs: { src: "images/GRR.png", alt: "" }
       })
     ])
   },

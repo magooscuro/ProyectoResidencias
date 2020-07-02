@@ -16,7 +16,7 @@
       <th scope="col">Acciones</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="font-weight-bold text-center">
    
    @foreach($categories as $category )
            <tr>

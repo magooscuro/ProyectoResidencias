@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">
         
-        <img src="/images/logo.png" class="logo_200 mx-auto d-block" alt="">
+        <img src="images/GRR.png" class="logo_200 mx-auto d-block" alt="">
       </div>
       <div class="card-body">
         <div class="input-group">
