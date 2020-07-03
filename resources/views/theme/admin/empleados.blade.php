@@ -26,6 +26,7 @@
 <!--Fin Header-->
 <!--inicio Aside-->
 @include('theme/admin/aside')
+<!--fin Aside-->
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -34,7 +35,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Almacenes</h1>
+                    <h1>Empleado</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -53,7 +54,9 @@
                         <table id="tabla" class="table " cellspacing="0" width="100%">
                             <thead >
                             <tr>
-                                <th>Almacen</th>
+                                <th>Nombre</th>
+                                <th>Puesto</th>
+                                <th>Telefono</th>
                                 <th>Opciones</th>
                             </tr>
                             </thead>
@@ -78,7 +81,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Almacen</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Empleado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -87,9 +90,25 @@
                 <form>
                     <div class="form-group row">
                         <div class="col">
-                            <input type="text" class="form-control" id="txtAlmacen" placeholder="Almacen" autofocus/>
+                            <input type="text" class="form-control" id="txtNombre" placeholder="Nombre">
                         </div >
                     </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <input type="text" class="form-control" id="txtApellidos" placeholder="Apellidos">
+                        </div >
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <input type="text" class="form-control" id="txtPuesto" placeholder="Puesto">
+                        </div >
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <input type="text" class="form-control" id="txtTelefono" placeholder="Telefono">
+                        </div >
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -105,7 +124,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Eliminar">Eliminar Almacen</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Eliminar">Eliminar Empleado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -115,7 +134,7 @@
                 <form>
                     <div class="form-group row">
                         <div class="col">
-                            <label id="lblEliminar">Quiere eliminar el Almacen?</label>
+                            <label id="lblEliminar">Quiere eliminar el Empleado?</label>
                         </div >
                     </div>
                 </form>
@@ -132,19 +151,38 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Editar">Editar Almacen</h5>
+                <h5 class="col-12 modal-title text-center ModalLongTitle" id="Actualizar">Editar Producto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group row">
-                        <div class="col">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control" id="txtEAlmacen" placeholder="Almacen" autofocus>
-                        </div >
-                    </div>
+                    <form>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>Nombre(s)</label>
+                                <input type="text" class="form-control" id="txteNombre" placeholder="Nombre">
+                            </div >
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>Apellidos</label>
+                                <input type="text" class="form-control" id="txteApellidos" placeholder="Apellidos">
+                            </div >
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>Puesto</label>
+                                <input type="text" class="form-control" id="txtePuesto" placeholder="Puesto">
+                            </div >
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>Telefono</label>
+                                <input type="text" class="form-control" id="txteTelefono" placeholder="Telefono">
+                            </div >
+                        </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -154,11 +192,11 @@
         </div>
     </div>
 </div>
-
+<!--Inicio footer-->
 
 @include("theme/admin/footer")
 
-<script src="{{asset("js/almacenes.js.php")}}" ></script>
+<script src="{{asset("js/empleados.js.php")}}" ></script>
 <script src="{{asset("assets/admin/plugins/datatables/jquery.dataTables.js")}}"></script>
 <script src="{{asset("assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 

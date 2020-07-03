@@ -4,10 +4,9 @@ namespace App\Http\Controllers\ApiControllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\ApiModelos\productos;
-use App\ApiModelos\almacenes;
+use App\ApiModelos\empleado;
 
-class productosController extends Controller
+class empleadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class productosController extends Controller
      */
     public function index()
     {
-        $productos = productos::with(['almacenes','subcategoria','ubicacion','unidad','subcategoria.categorias'])->get();
-        return $productos;
+        $empleados = empleado::all();
+        return $empleados;
     }
 
     /**
@@ -38,14 +37,12 @@ class productosController extends Controller
      */
     public function store(Request $request)
     {
-        $producto = new productos();
-        $producto->producto = $request->producto;
-        $producto->almacen_id = $request->almacen_id;
-        $producto->subcategoria_id = $request->subcategoria_id;
-        $producto->ubicacion_id = $request->ubicacion_id;
-        $producto->unidad_id = $request->unidad_id;
-        $producto->cantidad = $request->cantidad;
-        $producto->save();
+        $empleado = new empleado();
+        $empleado->nombres = $request->nombres;
+        $empleado->apellidos = $request->apellidos;
+        $empleado->puesto = $request->puesto;
+        $empleado->telefono = $request->telefono;
+        $empleado->save();
     }
 
     /**
@@ -56,8 +53,8 @@ class productosController extends Controller
      */
     public function show($id)
     {
-        $producto = productos::findOrFail($id);
-        return $producto;
+        $empleado = empleado::findOrFail($id);
+        return $empleado;
     }
 
     /**
@@ -68,7 +65,7 @@ class productosController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -80,18 +77,15 @@ class productosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $producto = productos::findOrFail($id);
+        $empleado = empleado::findOrFail($id);
 
-        $producto->producto = $request->producto;
-        $producto->almacen_id = $request->almacen_id;
-        $producto->subcategoria_id = $request->subcategoria_id;
-        $producto->ubicacion_id = $request->ubicacion_id;
-        $producto->unidad_id = $request->unidad_id;
-        $producto->cantidad = $request->cantidad;
+        $empleado->nombres = $request->nombres;
+        $empleado->apellidos = $request->apellidos;
+        $empleado->puesto = $request->puesto;
+        $empleado->telefono = $request->telefono;
 
-        $producto->save();
-        return $producto;
-
+        $empleado->save();
+        return $empleado;
     }
 
     /**
@@ -102,7 +96,7 @@ class productosController extends Controller
      */
     public function destroy($id)
     {
-        $producto = productos::destroy($id);
-        return $producto;
+        $empleado = empleado::destroy($id);
+        return  $empleado;
     }
 }

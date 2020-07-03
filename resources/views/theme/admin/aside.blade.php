@@ -65,6 +65,14 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview ">
+                    <a href="{{ action('AdminController\empleadosController@index') }}" class="nav-link">
+                        <i class="nav-icon fas fas fa-users "></i>
+                        <p>
+                            Empleado
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview ">
                     <a href="http://192.168.0.13/FRR/admin/es" class="nav-link">
                         <i class="nav-icon fas fa-arrows-alt-h"></i>
                         <p>

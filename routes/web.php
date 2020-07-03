@@ -49,6 +49,7 @@ Route::get('/admin/categorias','AdminController\categoriasController@index');
 Route::get('/admin/almacenes','AdminController\almacenesController@index');
 Route::get('/admin/ubicaciones','AdminController\ubicacionesController@index');
 Route::get('/admin/unidades','AdminController\unidadesController@index');
+Route::get('/admin/empleados','AdminController\empleadosController@index');
 
 
 
