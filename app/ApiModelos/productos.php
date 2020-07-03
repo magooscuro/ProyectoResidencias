@@ -29,5 +29,8 @@ class productos extends Model
         return $this->belongsTo('App\ApiModelos\unidades','unidad_id');
     }
 
+    public function  categoria(){
+        return $this->hasOneThrough('App\ApiModelos\subcategorias','App\ApiModelos\categorias');
+    }
 
 }

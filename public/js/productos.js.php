@@ -68,13 +68,15 @@ $(function () {
 
     jQuery('.dataTable').wrap('<div class="dataTables_scroll" />');
 
+
+
     $('#btnAgregar').click(function(){
 
         var producto = $("#txtProducto").val();
-        var almacen  = Number($("#txtAlmacen").val());
-        var subCategoria = Number($("#txtSubCategoria").val());
-        var ubicacion = Number($("#txtUbicacion").val());
-        var unidad = Number($("#txtUnidad").val());
+        var almacen  = Number($("#AddAlmacen").val());
+        var subCategoria = Number($("#AddSubCategoria").val());
+        var ubicacion = Number($("#AddUbicacion").val());
+        var unidad = Number($("#AddUnidad").val());
         var cantidad = Number($("#txtCantidad").val());
 
         var obj ={
@@ -103,10 +105,6 @@ $(function () {
                 $('#Agregar').html('Agregar producto');
 
                 $("#txtProducto").val("");
-                $("#txtAlmacen").val("");
-                $("#txtSubCategoria").val("");
-                $("#txtUbicacion").val("");
-                $("#txtUnidad").val("");
                 $("#txtCantidad").val("");
             },
             error:function(data){
@@ -152,6 +150,61 @@ $(function () {
         });
     });
 
+    $("#btnNuevo").click(function () {
+        var almacen = $(".AddAlmacen select");
+        var subcategoria = $(".AddSubCategoria select");
+        var ubicacion = $(".AddUbicacion select");
+        var unidad = $(".AddUnidad select");
+
+        $.ajax({
+            type:"GET",
+            url:'http://127.0.0.1:8000/api/almacenes',
+            ContentType: "application/json",
+            success:function(data) {
+                almacen.find('option').remove();
+                $(data).each(function(i, v){ // indice, valor
+                    almacen.append('<option value="' + v.id + '">' + v.almacen + '</option>');
+                })
+            }
+        });
+
+        $.ajax({
+            type:"GET",
+            url:'http://127.0.0.1:8000/api/subcategorias',
+            ContentType: "application/json",
+            success:function(data) {
+                subcategoria.find('option').remove();
+                $(data).each(function(i, v){ // indice, valor
+                    subcategoria.append('<option value="' + v.id + '">' + v.subCategoria + '</option>');
+                })
+            }
+        });
+
+        $.ajax({
+            type:"GET",
+            url:'http://127.0.0.1:8000/api/ubicaciones',
+            ContentType: "application/json",
+            success:function(data) {
+                ubicacion.find('option').remove();
+                $(data).each(function(i, v){
+                    ubicacion.append('<option value="' + v.id + '">' + v.anaquel + '/' +v.nivel +'</option>');
+                })
+            }
+        });
+
+        $.ajax({
+            type:"GET",
+            url:'http://127.0.0.1:8000/api/unidades',
+            ContentType: "application/json",
+            success:function(data) {
+                unidad.find('option').remove();
+                $(data).each(function(i, v){
+                    unidad.append('<option value="' + v.id + '">' + v.unidad + '</option>');
+                })
+            }
+        });
+    });
+
 
     $('table').on('click', '#btnEditarModal', function(){
 
@@ -159,27 +212,89 @@ $(function () {
         id = table.row($(this).parents('tr')).id();
 
         var producto = data.producto;
-        var almacen  = data.almacen_id;
-        var subCategoria = data.subcategoria_id;
-        var ubicacion = data.ubicacion_id;
-        var unidad = data.unidad_id;
+        var almacen_id  = data.almacen_id;
+        var subCategoria_id = data.subcategoria_id;
+        var ubicacion_id = data.ubicacion_id;
+        var unidad_id = data.unidad_id;
         var cantidad = data.cantidad;
 
+        var almacen = $(".UpAlmacen select");
+        var subcategoria = $(".UpSubCategoria select");
+        var ubicacion = $(".UpUbicacion select");
+        var unidad = $(".UpUnidad select");
+
         $("#txtEProducto").val(producto);
-        $("#txtEAlmacen").val(almacen);
-        $("#txtESubCategoria").val(subCategoria);
-        $("#txtEUbicacion").val(ubicacion);
-        $("#txtEUnidad").val(unidad);
+
+        $.ajax({
+            type:"GET",
+            url:'http://127.0.0.1:8000/api/almacenes',
+            ContentType: "application/json",
+            success:function(data) {
+                almacen.find('option').remove();
+                $(data).each(function(i, v){ // indice, valor
+                    if(v.id == almacen_id)
+                        almacen.append('<option value="' + v.id + '" selected>' + v.almacen + '</option>');
+                    else
+                        almacen.append('<option value="' + v.id + '">' + v.almacen + '</option>');
+                })
+            }
+        });
+
+        $.ajax({
+            type:"GET",
+            url:'http://127.0.0.1:8000/api/subcategorias',
+            ContentType: "application/json",
+            success:function(data) {
+                subcategoria.find('option').remove();
+                $(data).each(function(i, v){ // indice, valor
+                    if(v.id == subCategoria_id)
+                        subcategoria.append('<option value="' + v.id + '" selected>' + v.subCategoria + '</option>');
+                    else
+                        subcategoria.append('<option value="' + v.id + '">' + v.subCategoria + '</option>');
+                })
+            }
+        });
+
+        $.ajax({
+            type:"GET",
+            url:'http://127.0.0.1:8000/api/ubicaciones',
+            ContentType: "application/json",
+            success:function(data) {
+                ubicacion.find('option').remove();
+                $(data).each(function(i, v){
+                    if(v.id == ubicacion_id)
+                        ubicacion.append('<option value="' + v.id + '"selected>' + v.anaquel + '/' +v.nivel +'</option>');
+                    else
+                        ubicacion.append('<option value="' + v.id + '">' + v.anaquel + '/' +v.nivel +'</option>');
+                })
+            }
+        });
+
+        $.ajax({
+            type:"GET",
+            url:'http://127.0.0.1:8000/api/unidades',
+            ContentType: "application/json",
+            success:function(data) {
+                unidad.find('option').remove();
+                $(data).each(function(i, v){
+                    if(v.id == unidad_id)
+                    unidad.append('<option value="' + v.id + '"selected>' + v.unidad + '</option>');
+                    else
+                    unidad.append('<option value="' + v.id + '">' + v.unidad + '</option>');
+                })
+            }
+        });
+
         $("#txtECantidad").val(cantidad);
 
     });
 
     $('#btnActualizar').click(function(){
         var producto = $("#txtEProducto").val();
-        var almacen  = Number($("#txtEAlmacen").val());
-        var subCategoria = Number($("#txtESubCategoria").val());
-        var ubicacion = Number($("#txtEUbicacion").val());
-        var unidad = Number($("#txtEUnidad").val());
+        var almacen  = Number($("#UpAlmacen").val());
+        var subCategoria = Number($("#UpSubCategoria").val());
+        var ubicacion = Number($("#UpUbicacion").val());
+        var unidad = Number($("#UpUnidad").val());
         var cantidad = Number($("#txtECantidad").val());
 
         var obj ={
@@ -208,10 +323,7 @@ $(function () {
                 $('#Actualizar').html('Actualizar Producto');
 
                 $("#txtEProducto").val("");
-                $("#txtEAlmacen").val("");
-                $("#txtESubCategoria").val("");
-                $("#txtEUbicacion").val("");
-                $("#txtEUnidad").val("");
+
                 $("#txtECantidad").val("");
             },
             error:function(data){

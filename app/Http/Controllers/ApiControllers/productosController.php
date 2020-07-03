@@ -16,7 +16,7 @@ class productosController extends Controller
      */
     public function index()
     {
-        $productos = productos::with(['almacenes','subcategoria','ubicacion','unidad'])->get();
+        $productos = productos::with(['almacenes','subcategoria','ubicacion','unidad','categoria'])->get();
         return $productos;
     }
 

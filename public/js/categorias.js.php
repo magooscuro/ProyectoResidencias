@@ -190,7 +190,6 @@
           $('#modalEditar').modal('hide');
           $('#Editar').html('Actualizar Subcategoria');
 
-          $("#txtECategoria").val("");
 
         },
         error:function(data){

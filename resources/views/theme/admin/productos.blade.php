@@ -95,25 +95,31 @@
                     <form>
                         <div class="form-group row">
                             <div class="col">
+                                <label>Producto</label>
                                 <input type="text" class="form-control" id="txtProducto" placeholder="Producto">
                             </div >
-                            <div class="col">
-                                <input type="text" class="form-control" id="txtAlmacen" placeholder="Almacen">
+                            <div class=" col AddAlmacen">
+                                <label>Almacen</label>
+                                <select  class="form-control" id="AddAlmacen"></select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col">
-                                <input type="text" class="form-control" id="txtSubCategoria" placeholder="SubCategoria">
-                            </div >
-                            <div class="col">
-                                <input type="text" class="form-control" id="txtUbicacion" placeholder="Ubicacion">
+                            <div class=" col AddSubCategoria">
+                                <label>SubCategoria</label>
+                                <select  class="form-control" id="AddSubCategoria"></select>
+                            </div>
+                            <div class=" col AddUbicacion">
+                                <label>Ubicacion</label>
+                                <select  class="form-control" id="AddUbicacion"></select>
                             </div>
                         </div>
                         <div class="form-group row">
+                            <div class=" col AddUnidad">
+                                <label>Unidad</label>
+                                <select  class="form-control" id="AddUnidad"></select>
+                            </div>
                             <div class="col">
-                                <input type="text" class="form-control" id="txtUnidad" placeholder="Unidad">
-                            </div >
-                            <div class="col">
+                                <label>Cantidad</label>
                                 <input type="number" class="form-control" id="txtCantidad" placeholder="Cantidad">
                             </div>
                         </div>
@@ -171,26 +177,26 @@
                                 <label>Nombre</label>
                                 <input type="text" class="form-control" id="txtEProducto" placeholder="Producto">
                             </div >
-                            <div class="col">
+                            <div class=" col UpAlmacen">
                                 <label>Almacen</label>
-                                <input type="text" class="form-control" id="txtEAlmacen" placeholder="Almacen">
+                                <select  class="form-control" id="UpAlmacen"></select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col">
+                            <div class=" col UpSubCategoria">
                                 <label>SubCategoria</label>
-                                <input type="text" class="form-control" id="txtESubCategoria" placeholder="SubCategoria">
+                                <select  class="form-control" id="UpSubCategoria"></select>
                             </div>
-                            <div class="col">
+                            <div class=" col UpUbicacion">
                                 <label>Ubicacion</label>
-                                <input type="text" class="form-control" id="txtEUbicacion" placeholder="Ubicacion">
+                                <select  class="form-control" id="UpUbicacion"></select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col">
+                            <div class=" col UpUnidad">
                                 <label>Unidad</label>
-                                <input type="text" class="form-control" id="txtEUnidad" placeholder="Unidad">
-                            </div >
+                                <select  class="form-control" id="UpUnidad"></select>
+                            </div>
                             <div class="col">
                                 <label>Cantidas</label>
                                 <input type="number" class="form-control" id="txtECantidad" placeholder="Cantidad">
