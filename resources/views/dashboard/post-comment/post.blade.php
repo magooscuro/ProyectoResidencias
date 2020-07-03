@@ -2,29 +2,11 @@
 
 @section('content')
 
-<div class="col-6 mb-3">
-    <form action="{{ route('post-comment.post',1) }}" id="filterForm">
-        <div class="form-row">
-            <div class="col-10">
-                <select id="filterPost" class="form-control">
-                    @foreach($posts as $p)
-                        <option value="{{ $p->id }}"
-                            {{ $post->id == $p->id ? 'selected' : '' }}>
-                            {{ Str::limit($p->title, 10) }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-2">
-                <button class="btn btn-success" type="submit"><i class="fa fa-arrow-right"></i>Aceptar</button>
-            </div>
-        </div>
-    </form>
-</div>
+
 
 @if(count($postComments) > 0)
 
-    <div class="card">
+    <div class="card text-center  mt-3 mb-3">
         <div class="card-header card-header-primary">
             <h4 class="card-title">
                 Listado de comentarios para {{ $post->title }}
@@ -33,9 +15,10 @@
                 Aqui encontrarás todos los comentarios de este post
             </div>
         </div>
-        <div class="card-body">
-            <table class="table">
-                <thead class="text-primary">
+        
+        <div class="card-body ">
+            <table class="table table-border table-hover text-center">
+                <thead class="text-primary thead-dark">
                     <tr>
                         <th>
                             Id
@@ -86,13 +69,13 @@
                                 class="btn btn-primary">Ver</a> --}}
 
                                 <button data-toggle="modal" data-target="#showModal" data-id="{{ $postComment->id }}"
-                                    class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                                    class="btn btn-primary"><i class="fa fa-eye"></i>Vista General</button>
 
                                 <button data-id="{{ $postComment->id }}"
                                     class="approved btn btn-{{ $postComment->approved == 1 ? "success": "danger" }}">{{ $postComment->approved == 1 ? "Aprobado": "Rechazado" }}</button>
 
                                 <button data-toggle="modal" data-target="#deleteModal"
-                                    data-id="{{ $postComment->id }}" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                    data-id="{{ $postComment->id }}" class="btn btn-danger"><i class="fa fa-trash"></i>Borrar Comentario</button>
 
                             </td>
                         </tr>
@@ -173,40 +156,40 @@
         var formData = new FormData();
         formData.append("_token", '{{ csrf_token() }}');
 
-        fetch("{{ URL::to("/") }}/dashboard/post-comment/proccess/" + id, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(aprroved => {
+        //fetch("{{ URL::to("/") }}/dashboard/post-comment/proccess/" + id, {
+          //      method: 'POST',
+            //    body: formData
+            //})
+            //.then(response => response.json())
+            //.then(aprroved => {
 
-                if (aprroved == 1) {
-                    button.classList.remove('btn-danger');
-                    button.classList.add('btn-success');
-                    button.innerHTML = "Aprobado";
-                } else {
-                    button.classList.remove('btn-success');
-                    button.classList.add('btn-danger');
-                    button.innerHTML = "Rechazado";
-                }
-            });
+//                if (aprroved == 1) {
+  //                  button.classList.remove('btn-danger');
+    //                button.classList.add('btn-success');
+      //              button.innerHTML = "Aprobado";
+        //        } else {
+          //          button.classList.remove('btn-success');
+            //        button.classList.add('btn-danger');
+              //      button.innerHTML = "Rechazado";
+              //  }
+            //});
 
-        // $.ajax({
-        //     method: "POST",
-        //     url: "{{ URL::to("/") }}/dashboard/post-comment/proccess/"+id,
-        //     data:{'_token': '{{ csrf_token() }}'}
-        // })
-        // .done(function( aprroved ) {
-        //     if(aprroved == 1){
-        //         $(button).removeClass('btn-danger');
-        //         $(button).addClass('btn-success');
-        //         $(button).text("Aprobado")
-        //     }else{
-        //         $(button).addClass('btn-danger');
-        //         $(button).removeClass('btn-success');
-        //         $(button).text("Rechazado")
-        //     }
-        // });
+         $.ajax({
+             method: "POST",
+             url: "{{ URL::to("/") }}/dashboard/post-comment/proccess/"+id,
+             data:{'_token': '{{ csrf_token() }}'}
+         })
+         .done(function( aprroved ) {
+             if(aprroved == 1){
+                 $(button).removeClass('btn-danger');
+                 $(button).addClass('btn-success');
+                 $(button).text("Aprobado")
+             }else{
+                 $(button).addClass('btn-danger');
+                 $(button).removeClass('btn-success');
+                 $(button).text("Rechazado")
+             }
+         });
 
     }))
 
@@ -222,21 +205,21 @@
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
             var modal = $(this)
-            /* $.ajax({
+             $.ajax({
                  method: "GET",
                  url: "{{ URL::to("/") }}/dashboard/post-comment/j-show/"+id
              })
              .done(function( comment ) {
-                 modal.find('.modal-title').text(comment.title)
-                 modal.find('.message').text(comment.message)
-             });*/
+                 modal.find('.modal-title').html(comment.title)
+                 modal.find('.message').html(comment)
+             });
 
-            fetch("{{ URL::to("/") }}/dashboard/post-comment/j-show/" + id)
-                .then(response => response.json())
-                .then(comment => {
-                    modal.find('.modal-title').text(comment.title)
-                    modal.find('.message').text(comment.message)
-                });
+           // fetch("{{ URL::to("/") }}/dashboard/post-comment/j-show/" + id)
+             //   .then(response => response.json())
+               // .then(comment => {
+                 //   modal.find('.modal-title').text(comment.title)
+                  //  modal.find('.message').text(comment.message)
+                //});
 
         });
 

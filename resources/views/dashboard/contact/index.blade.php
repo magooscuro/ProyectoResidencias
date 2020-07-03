@@ -8,7 +8,7 @@
       <th scope="col">Id</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
-      <th scope="col">Email/th>
+      <th scope="col">Email</th>
       <th scope="col">Fecha de Creacion</th>
       <th scope="col">Fecha de actualizacion</th>
       <th scope="col">Acciones</th>

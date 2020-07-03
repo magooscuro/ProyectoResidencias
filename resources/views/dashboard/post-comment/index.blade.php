@@ -29,7 +29,7 @@
                 {{ $postComment->approved }}
             </td>
             <td>
-                {{ $postComment->user->name }}
+                {{ $postComment->user->name}}
             </td>
             <td>
                 {{ $postComment->created_at->format('d-m-Y') }}

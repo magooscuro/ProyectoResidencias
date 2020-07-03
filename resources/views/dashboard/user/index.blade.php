@@ -5,7 +5,7 @@
 </a>
 
 
-<table class="table">
+<table class="table text-center">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Id</th>

@@ -5,7 +5,7 @@
 </a>
 
 
-<table class="table table-border table-hover">
+<table class="table table-border table-hover text-center">
   <thead class="thead-dark">
     <tr >
       <th scope="col">Id</th>

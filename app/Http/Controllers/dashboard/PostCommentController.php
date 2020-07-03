@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\dashboard;
-
+ 
 use App\Http\Controllers\Controller;
 use App\ModelosFormulario\Post;
 use App\ModelosFormulario\PostComment;
@@ -30,7 +30,7 @@ class PostCommentController extends Controller
     public function post(Post $post)
     {
 
-        $posts = Post::all(); // obtiene todos los post 
+        $posts = Post::all();
 
         $postComments = PostComment
             ::orderBy('created_at', 'desc')
@@ -39,10 +39,9 @@ class PostCommentController extends Controller
 
         return view('dashboard.post-comment.post',
             ['postComments' => $postComments,
-                'posts' => $posts, //se le cargan con todos los post    
-                'post' => $post]); //se le anexa el post en sigular que  es el que selleciono el usuario
+                'posts' => $posts,
+                'post' => $post]);
     }
-
     /**
      * Display the specified resource.
      *
@@ -56,11 +55,11 @@ class PostCommentController extends Controller
 
     }
 
-    public function jshow(PostComment $postComment)
+    public function jshow(PostComment $postComment) //funcion que nos regresara los comentarios del post indicado
     {
         //  $postComment = PostComment::findOrFail($id);
-        return response()->json($postComment);
-        //return view('dashboard.post-comment.show', ["postComment" => $postComment]);
+       // return response()->json($postComment);
+        return view('dashboard.post-comment.showcoment', ["postComment" => $postComment]); //devuelvo la vista
     }
 
     public function proccess(PostComment $postComment)
