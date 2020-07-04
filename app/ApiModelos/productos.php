@@ -33,4 +33,9 @@ class productos extends Model
         return $this->hasOneThrough('App\ApiModelos\subcategorias','App\ApiModelos\categorias');
     }
 
+    public function es()
+    {
+        return $this->hasMany('App\ApiModelos\es');
+    }
+
 }

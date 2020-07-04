@@ -132,7 +132,7 @@ $(function () {
                 $('.Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
             },
             success:function(data){
-                console.log(data);
+
                 table.ajax.reload();
                 table.draw();
 

@@ -30,6 +30,6 @@ class CreateTableEmpledos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_empledos');
+        Schema::dropIfExists('empledos');
     }
 }

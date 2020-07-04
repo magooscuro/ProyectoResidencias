@@ -4,10 +4,9 @@ namespace App\Http\Controllers\ApiControllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\ApiModelos\productos;
-use App\ApiModelos\almacenes;
+use App\ApiModelos\es;
 
-class productosController extends Controller
+class esHController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class productosController extends Controller
      */
     public function index()
     {
-        $productos = productos::with(['almacenes','subcategoria','ubicacion','unidad','subcategoria.categorias'])->get();
-        return $productos;
+        $es = es::with(['autoriza','salida','producto'])->where('status','=','1')->get();
+        return $es;
     }
 
     /**
@@ -38,14 +37,7 @@ class productosController extends Controller
      */
     public function store(Request $request)
     {
-        $producto = new productos();
-        $producto->producto = $request->producto;
-        $producto->almacen_id = $request->almacen_id;
-        $producto->subcategoria_id = $request->subcategoria_id;
-        $producto->ubicacion_id = $request->ubicacion_id;
-        $producto->unidad_id = $request->unidad_id;
-        $producto->cantidad = $request->cantidad;
-        $producto->save();
+        //
     }
 
     /**
@@ -56,8 +48,7 @@ class productosController extends Controller
      */
     public function show($id)
     {
-        $producto = productos::with(['almacenes','subcategoria','ubicacion','unidad','subcategoria.categorias'])->where('id','=',$id)->get();
-            return $producto;
+        //
     }
 
     /**
@@ -80,18 +71,7 @@ class productosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $producto = productos::findOrFail($id);
-
-        $producto->producto = $request->producto;
-        $producto->almacen_id = $request->almacen_id;
-        $producto->subcategoria_id = $request->subcategoria_id;
-        $producto->ubicacion_id = $request->ubicacion_id;
-        $producto->unidad_id = $request->unidad_id;
-        $producto->cantidad = $request->cantidad;
-
-        $producto->save();
-        return $producto;
-
+        //
     }
 
     /**
@@ -102,7 +82,6 @@ class productosController extends Controller
      */
     public function destroy($id)
     {
-        $producto = productos::destroy($id);
-        return $producto;
+        //
     }
 }

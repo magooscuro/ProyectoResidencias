@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\ModelosFormulario\Rol; //agregando la funcion 
+use App\ModelosFormulario\Rol; //agregando la funcion
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -43,5 +43,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Rol::class);
     }
-    //belongsto nos nos arroja el usuario que posee el rol 
+    //belongsto nos nos arroja el usuario que posee el rol
+    public function es()
+    {
+        return $this->hasMany('App\ApiModelos\es');
+    }
 }
