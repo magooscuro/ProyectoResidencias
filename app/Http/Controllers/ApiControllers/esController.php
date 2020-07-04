@@ -15,7 +15,7 @@ class esController extends Controller
      */
     public function index()
     {
-        $es = es::with(['autoriza','salida','producto'])->get();
+        $es = es::with(['autoriza','salida','producto'])->where('status','=','0')->get();
         return $es;
     }
 

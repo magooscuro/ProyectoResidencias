@@ -239,15 +239,16 @@
 
         stock = stock+cantidadx;
         dataprod.cantidad=stock;
-        $.ajax({
-            type:"PUT",
-            data: dataprod,
-            url: 'http://127.0.0.1:8000/api/productos/'+prod,
-            ContentType: "application/json"
-        }).fail(function($xhr){
-            var  data = $xhr.responseJSON;
-        });
-
+        if(dataprod.subcategoria.categorias.categoria =! "Herramienta") {
+            $.ajax({
+                type: "PUT",
+                data: dataprod,
+                url: 'http://127.0.0.1:8000/api/productos/' + prod,
+                ContentType: "application/json"
+            }).fail(function ($xhr) {
+                var data = $xhr.responseJSON;
+            });
+        }
         $.ajax({
             type:"Delete",
             url: 'http://127.0.0.1:8000/api/es/'+id,
@@ -265,7 +266,6 @@
             url:'http://127.0.0.1:8000/api/productos/'+producto,
             ContentType: "application/json",
             success:function(data) {
-                console.log("asd");
                 $(data).each(function(i, v){ // indice, valor
                     stock = v.cantidad
                 });
@@ -283,7 +283,9 @@
             cantidad:cantidad,
             status:status
         };
-        dataprod2.cantidad=dataprod2.cantidad-cantidad;
+
+        dataprod2.cantidad=dataprod2.cantidad-cantidad
+
         if(stock>0 && stock>=cantidad) {
             $.ajax({
                 type: "POST",
@@ -294,7 +296,6 @@
                     $('#Actualizar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
                 },
                 success: function (data) {
-                    console.log(data);
                     table.ajax.reload();
                     table.draw();
                     table2.ajax.reload();
@@ -414,6 +415,8 @@ console.log(data);
              success:function (data) {
                  table2.ajax.reload();
                  table2.draw();
+                 table.ajax.reload();
+                 table.draw();
                  $('#modalRegreso').modal('hide');
                  $('#Eliminar').html('Entrega');
 
