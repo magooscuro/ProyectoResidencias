@@ -28,12 +28,7 @@
           }
       ],
       rowId:"id",
-      "columnDefs":[{
-        "targets":3,
-        "data":null,
-        "defaultContent":"<button type='button' id='btnDetalleModal' class='btn btn-info' title='Ver'><i class='fas fa-eye'></i></button>"+
-        "<button type='button' id='btnEditarModal' class='btn btn-warning' title='Editar' data-toggle='modal' data-target='#modalEditar'><i class='fas fa-edit'></i></button>"
-      }],
+
       responsive: true,
       "language": {
         "lengthMenu": "Se muestran _MENU_ resultados por pagina",
@@ -76,10 +71,10 @@
                 $(data).each(function(i, v){ // indice, valor
                     stock = v.cantidad
                 });
-                if(data[0].subcategoria.categorias.categoria = "Herramienta")
+                if(data[0].subcategoria.categorias.categoria == "Herramienta")
                     status="1";
 
-     dataprod = data[0];
+                dataprod = data[0];
             }
         });
 
@@ -220,14 +215,6 @@
         var autoriza = $("#txteautoriza").val();
         var status = '0';
 
-        var obj ={
-            autorizado_id:autoriza,
-            producto_id:producto,
-            salida_id:salida,
-            cantidad:cantidad,
-            status:status
-        };
-
         var stock =0;
         $.ajax({
             type:"GET",
@@ -238,9 +225,20 @@
                 $(data).each(function(i, v){ // indice, valor
                     stock = v.cantidad
                 });
+                if(data[0].subcategoria.categorias.categoria == "Herramienta")
+                    status="1";
                 dataprod = data[0];
             }
         });
+
+        var obj ={
+            autorizado_id:autoriza,
+            producto_id:producto,
+            salida_id:salida,
+            cantidad:cantidad,
+            status:status
+        };
+
         stock = stock+cantidadx;
         dataprod.cantidad=stock-cantidad;
         if(stock>0 && stock>=cantidad) {
@@ -256,6 +254,9 @@
                     console.log(data);
                     table.ajax.reload();
                     table.draw();
+
+                    table2.ajax.reload();
+                    table2.draw();
 
                     $('#modalEditar').modal('hide');
                     $('.ModalLongTitle').html('Actualizar salida');
@@ -342,7 +343,7 @@
          id = table2.row($(this).parents('tr')).id();
          var data = table2.row($(this).parents('tr')).data();
 console.log(data);
-         $('#lblentrega').html("Recibio de "+data.salida.nombres+" "+data.salida.apellidos+" la herramienta "+data.producto.producto);
+         $('#lblentrega').html("Recibio de "+data.salida.nombres+" "+data.salida.apellidos+" la herramienta "+data.producto.producto+"\n Cantidad: "+data.cantidad);
      });
 
      $("#btnentregado").click(function(){

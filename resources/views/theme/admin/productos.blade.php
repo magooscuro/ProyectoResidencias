@@ -198,7 +198,7 @@
                                 <select  class="form-control" id="UpUnidad"></select>
                             </div>
                             <div class="col">
-                                <label>Cantidas</label>
+                                <label>Cantidad</label>
                                 <input type="number" class="form-control" id="txtECantidad" placeholder="Cantidad">
                             </div>
                         </div>

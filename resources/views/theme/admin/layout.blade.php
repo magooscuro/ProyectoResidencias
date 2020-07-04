@@ -57,7 +57,7 @@
                                     <th>Nombre</th>
                                     <th>Prodcuto</th>
                                     <th>cantidad</th>
-                                    <th>Opciones</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -72,7 +72,7 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Prodcuto</th>
-                                    <th>cantidad</th>
+                                    <th>Cantidad</th>
                                     <th>Opciones</th>
                                 </tr>
                                 </thead>
@@ -121,7 +121,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col">
-                                <input type="text" class="form-control" id="txtCantidad" placeholder="Cantidad">
+                                <input type="number" class="form-control" id="txtCantidad" placeholder="Cantidad">
                             </div >
                         </div>
                     </form>
@@ -191,7 +191,7 @@
                         <div class="form-group row">
                             <div class="col">
                                 <label>Cantidad</label>
-                                <input type="text" class="form-control" id="txteCantidad" placeholder="Cantidad">
+                                <input type="number" class="form-control" id="txteCantidad" placeholder="Cantidad">
                             </div >
                         </div>
                 </div>
