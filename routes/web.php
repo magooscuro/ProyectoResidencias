@@ -27,6 +27,8 @@ Route::resource('dashboard/user', 'dashboard\UserController');
 
 Route::get('dashboard/post-comment/{post}/post', 'dashboard\PostCommentController@post')->name('post-comment.post');//ruta de los comentaros por post
 Route::get('dashboard/post-comment/j-show/{postComment}', 'dashboard\PostCommentController@jshow');
+Route::post('dashboard/post-comment/proccess/{postComment}', 'dashboard\PostCommentController@proccess');
+
 
 Route::get('/detail/{id}', 'web\WebController@detail');
 Route::get('/post-category/{id}', 'web\WebController@post_category');
