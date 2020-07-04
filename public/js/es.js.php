@@ -28,7 +28,11 @@
           }
       ],
       rowId:"id",
-
+        "columnDefs":[{
+            "targets":3,
+            "data":null,
+            "defaultContent":"<button type='button' id='btnEditarModal' class='btn btn-warning' title='Editar' data-toggle='modal' data-target='#modalEditar'><i class='fas fa-edit'></i></button>"
+        }],
       responsive: true,
       "language": {
         "lengthMenu": "Se muestran _MENU_ resultados por pagina",
@@ -51,6 +55,7 @@
     jQuery('.dataTable').wrap('<div class="dataTables_scroll" />');
 
     $('#btnAgregar').click(function(){
+
 
       var salida = $("#txtNombre").val();
       var producto = $("#txtProducto").val();
@@ -162,12 +167,14 @@
 
 
      var cantidadx
+     var prod = 0;
     $('table').on('click', '#btnEditarModal', function(){
 
       var data = table.row($(this).parents('tr')).data();
       id = table.row($(this).parents('tr')).id();
       var salida =data.salida_id;
       var producto = data.producto_id;
+      prod = producto;
       cantidadx = data.cantidad
 
         var salidal = $(".Addeempleado select");
@@ -209,6 +216,7 @@
     });
 
     $('#btnActualizar').click(function(){
+
         var salida = $("#txteNombre").val();
         var producto = $("#txteProducto").val();
         var cantidad = $("#txteCantidad").val();
@@ -219,15 +227,52 @@
         $.ajax({
             type:"GET",
             async : false,
-            url:'http://127.0.0.1:8000/api/productos/'+producto,
+            url:'http://127.0.0.1:8000/api/productos/'+prod,
             ContentType: "application/json",
             success:function(data) {
                 $(data).each(function(i, v){ // indice, valor
                     stock = v.cantidad
                 });
+                dataprod = data[0];
+            }
+        });
+
+        stock = stock+cantidadx;
+        dataprod.cantidad=stock;
+        $.ajax({
+            type:"PUT",
+            data: dataprod,
+            url: 'http://127.0.0.1:8000/api/productos/'+prod,
+            ContentType: "application/json"
+        }).fail(function($xhr){
+            var  data = $xhr.responseJSON;
+        });
+
+        $.ajax({
+            type:"Delete",
+            url: 'http://127.0.0.1:8000/api/es/'+id,
+            ContentType: "application/json",
+        }).fail(function($xhr){
+            var  data = $xhr.responseJSON;
+        });
+
+
+
+        var dataprod2=[];
+        $.ajax({
+            type:"GET",
+            async : false,
+            url:'http://127.0.0.1:8000/api/productos/'+producto,
+            ContentType: "application/json",
+            success:function(data) {
+                console.log("asd");
+                $(data).each(function(i, v){ // indice, valor
+                    stock = v.cantidad
+                });
                 if(data[0].subcategoria.categorias.categoria == "Herramienta")
                     status="1";
-                dataprod = data[0];
+
+                dataprod2 = data[0];
             }
         });
 
@@ -238,31 +283,28 @@
             cantidad:cantidad,
             status:status
         };
-
-        stock = stock+cantidadx;
-        dataprod.cantidad=stock-cantidad;
+        dataprod2.cantidad=dataprod2.cantidad-cantidad;
         if(stock>0 && stock>=cantidad) {
             $.ajax({
-                type: "PUT",
+                type: "POST",
                 data: obj,
-                url: 'http://127.0.0.1:8000/api/es/' + id,
+                url: 'http://127.0.0.1:8000/api/es',
                 ContentType: "application/json",
                 beforeSend: function () {
-                    $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                    $('#Actualizar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
                 },
                 success: function (data) {
                     console.log(data);
                     table.ajax.reload();
                     table.draw();
-
                     table2.ajax.reload();
                     table2.draw();
 
                     $('#modalEditar').modal('hide');
-                    $('.ModalLongTitle').html('Actualizar salida');
+                    $('#Actualizar').html('Agregar Salida');
 
-                    $("#txtEUbicacion").val("");
-
+                    $("#txtPersona").val("");
+                    $("#txtProducto").val("");
                 },
                 error: function (data) {
                     alert("no hay conexion");
@@ -273,15 +315,20 @@
 
             $.ajax({
                 type:"PUT",
-                data: dataprod,
+                data: dataprod2,
                 url: 'http://127.0.0.1:8000/api/productos/'+producto,
                 ContentType: "application/json"
             }).fail(function($xhr){
                 var  data = $xhr.responseJSON;
             });
+
+
         }
         else
-            alert('Cantidad insuficiente')
+            alert("Stock no diponible")
+
+
+
 
     });
 

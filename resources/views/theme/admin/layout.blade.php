@@ -57,7 +57,7 @@
                                     <th>Nombre</th>
                                     <th>Prodcuto</th>
                                     <th>cantidad</th>
-
+                                    <th>Opciones</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -127,7 +127,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAgregar">Agregar</button>
+                    <button type="button" class="btn btn-primary" id="btnAgregar" >Agregar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Calcelar</button>
                 </div>
             </div>
