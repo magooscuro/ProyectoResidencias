@@ -295,7 +295,7 @@
                 url: 'http://127.0.0.1:8000/api/es',
                 ContentType: "application/json",
                 beforeSend: function () {
-                    $('#Actualizar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                    $('#Actualizar').html('<div class="loading"><img src=".{{./../img/loader.gif}}" alt="loading" /><br/>Un momento, por favor...</div>');
                 },
                 success: function (data) {
                     table.ajax.reload();
@@ -397,11 +397,13 @@ console.log(data);
      });
 
      $("#btnentregado").click(function(){
-         $('#modalRegreso').modal('hide');
          var data2 =[];
          $.ajax({
              type:"GET",
              async : false,
+             beforeSend: function () {
+                 $('#Actualizar').html('<div class="loading"><img src="{{ asset('images/oader.gif') }}" alt="loading" /><br/>Un momento, por favor...</div>');
+             },
              url:'http://127.0.0.1:8000/api/es/'+id,
              ContentType: "application/json",
              success:function(data) {
