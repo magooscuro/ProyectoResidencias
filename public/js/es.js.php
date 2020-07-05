@@ -109,7 +109,7 @@
                     table2.draw();
 
                     $('#modalAgregar').modal('hide');
-                    $('.ModalLongTitle').html('Agregar Salida');
+                    $('.Agregar').html('Agregar Salida');
 
                     $("#txtPersona").val("");
                     $("#txtProducto").val("");
@@ -397,16 +397,17 @@ console.log(data);
      });
 
      $("#btnentregado").click(function(){
+
          $('#Eliminar').html('asdadasdasdas');
          var data2 =[];
          $.ajax({
              type:"GET",
              async : false,
-             beforeSend: function () {
-                 $('#Eliminar').html('asdadasdasdas');
-             },
              url:'http://127.0.0.1:8000/api/es/'+id,
              ContentType: "application/json",
+             beforeSend: function () {
+                 $('#Actualizar').html('<div class="loading"><img src=".{{127.0.0.1:8000/public/images/loader.gif}}" alt="loading" /><br/>Un momento, por favor...</div>');
+             }
              success:function(data) {
                  data2 = data[0];
              }
@@ -418,9 +419,6 @@ console.log(data);
              data: data2,
              url: 'http://127.0.0.1:8000/api/es/'+id,
              ContentType: "application/json",
-             beforeSend: function () {
-                 $('#Eliminar').html('asdadasdasdas');
-             },
              success:function (data) {
                  table2.ajax.reload();
                  table2.draw();
