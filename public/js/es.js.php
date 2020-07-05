@@ -398,8 +398,6 @@ console.log(data);
 
      $("#btnentregado").click(function(){
 
-         document.getElementById('btnentregado').disabled = true;
-
          var data2 =[];
          $.ajax({
              type:"GET",
@@ -420,6 +418,9 @@ console.log(data);
              data: data2,
              url: 'http://127.0.0.1:8000/api/es/'+id,
              ContentType: "application/json",
+             beforeSend: function () {
+                 $('#Eliminar').html('asdadasdasdas');
+             },
              success:function (data) {
                  table2.ajax.reload();
                  table2.draw();
