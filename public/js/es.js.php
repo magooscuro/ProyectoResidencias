@@ -397,7 +397,7 @@ console.log(data);
      });
 
      $("#btnentregado").click(function(){
-
+         $('#Eliminar').html('asdadasdasdas');
          var data2 =[];
          $.ajax({
              type:"GET",
