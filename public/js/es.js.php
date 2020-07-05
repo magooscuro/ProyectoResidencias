@@ -402,7 +402,7 @@ console.log(data);
              type:"GET",
              async : false,
              beforeSend: function () {
-                 $('#Actualizar').html('<div class="loading"><img src="{{ asset('images/oader.gif') }}" alt="loading" /><br/>Un momento, por favor...</div>');
+                 $('#Actualizar').html('<div class="loading"><img src="" alt="loading" /><br/>Un momento, por favor...</div>');
              },
              url:'http://127.0.0.1:8000/api/es/'+id,
              ContentType: "application/json",
