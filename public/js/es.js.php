@@ -397,6 +397,7 @@ console.log(data);
      });
 
      $("#btnentregado").click(function(){
+         $('#modalRegreso').modal('hide');
          var data2 =[];
          $.ajax({
              type:"GET",
