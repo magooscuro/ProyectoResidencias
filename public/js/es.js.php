@@ -239,7 +239,9 @@
 
         stock = stock+cantidadx;
         dataprod.cantidad=stock;
-        if(dataprod.subcategoria.categorias.categoria =! "Herramienta") {
+        console.log(dataprod.subcategoria.categorias.categoria);
+        if(dataprod.subcategoria.categorias.categoria != "Herramienta") {
+            console.log("estoy aqui we");
             $.ajax({
                 type: "PUT",
                 data: dataprod,
