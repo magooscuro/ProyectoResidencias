@@ -97,7 +97,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Empleado</h5>
+                    <h5 class="col-12 modal-title text-center ModalLongTitle" id="Agregar">Agregar Salida</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -139,6 +139,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+                    <img src="http://127.0.0.1:8000/img/loader.gif" alt="loading"   id="imgl" >
                     <h5 class="col-12 modal-title text-center ModalLongTitle" id="Eliminar">Entrega</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -155,7 +156,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="btnentregado">Aceptar</button>
+                    <button type="button" class="btn btn-success" id="btnentregado"  onclick="">Aceptar</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Calcelar</button>
                 </div>
             </div>

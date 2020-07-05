@@ -1,7 +1,7 @@
 
  var id=-1;
  $(function () {
-
+     document.getElementById("imgl").style.visibility= "hidden";
     var table = $("#tabla").DataTable({
       "ajax":{
         "url":"http://127.0.0.1:8000/api/es",
@@ -99,17 +99,16 @@
                 url: 'http://127.0.0.1:8000/api/es',
                 ContentType: "application/json",
                 beforeSend: function () {
-                    $('.ModalLongTitle').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                    $('#Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
                 },
                 success: function (data) {
-                    console.log(data);
                     table.ajax.reload();
                     table.draw();
                     table2.ajax.reload();
                     table2.draw();
 
                     $('#modalAgregar').modal('hide');
-                    $('.Agregar').html('Agregar Salida');
+                    $('#Agregar').html('Agregar Salida');
 
                     $("#txtPersona").val("");
                     $("#txtProducto").val("");
@@ -239,9 +238,8 @@
 
         stock = stock+cantidadx;
         dataprod.cantidad=stock;
-        console.log(dataprod.subcategoria.categorias.categoria);
+
         if(dataprod.subcategoria.categorias.categoria != "Herramienta") {
-            console.log("estoy aqui we");
             $.ajax({
                 type: "PUT",
                 data: dataprod,
@@ -392,13 +390,14 @@
 
          id = table2.row($(this).parents('tr')).id();
          var data = table2.row($(this).parents('tr')).data();
-console.log(data);
          $('#lblentrega').html("Recibio de "+data.salida.nombres+" "+data.salida.apellidos+" la herramienta "+data.producto.producto+"\n Cantidad: "+data.cantidad);
      });
 
      $("#btnentregado").click(function(){
+         $('#modalRegreso').modal('hide');
+         alert("Producto entregado");
 
-         $('#Eliminar').html('asdadasdasdas');
+
          var data2 =[];
          $.ajax({
              type:"GET",
@@ -406,10 +405,12 @@ console.log(data);
              url:'http://127.0.0.1:8000/api/es/'+id,
              ContentType: "application/json",
              beforeSend: function () {
-                 $('#Actualizar').html('<div class="loading"><img src=".{{127.0.0.1:8000/public/images/loader.gif}}" alt="loading" /><br/>Un momento, por favor...</div>');
-             }
+
+                 $('#modalRegreso').modal('hide');
+             },
              success:function(data) {
                  data2 = data[0];
+                 $('#modalRegreso').modal('hide');
              }
          });
          data2.status = "0";
@@ -419,6 +420,9 @@ console.log(data);
              data: data2,
              url: 'http://127.0.0.1:8000/api/es/'+id,
              ContentType: "application/json",
+             beforeSend: function () {
+                 $('#modalRegreso').modal('hide');
+             },
              success:function (data) {
                  table2.ajax.reload();
                  table2.draw();
@@ -438,9 +442,13 @@ console.log(data);
              async : false,
              url:'http://127.0.0.1:8000/api/productos/'+data2.producto_id,
              ContentType: "application/json",
+             beforeSend: function () {
+                 $('#modalRegreso').modal('hide');
+             },
              success:function(data) {
 
                  data3 = data[0];
+                 $('#modalRegreso').modal('hide');
              }
          });
 
@@ -453,7 +461,7 @@ console.log(data);
              url: 'http://127.0.0.1:8000/api/productos/'+data2.producto_id,
              ContentType: "application/json",
              success:function (data) {
-
+                 $('#modalRegreso').modal('hide');
              }
          }).fail(function($xhr){
              var  data = $xhr.responseJSON;
