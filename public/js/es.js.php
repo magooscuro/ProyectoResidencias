@@ -397,6 +397,9 @@ console.log(data);
      });
 
      $("#btnentregado").click(function(){
+
+         document.getElementById('btnentregado').disabled = true;
+
          var data2 =[];
          $.ajax({
              type:"GET",
