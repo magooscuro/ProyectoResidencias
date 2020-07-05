@@ -57,6 +57,7 @@
                                     <th>Nombre</th>
                                     <th>Prodcuto</th>
                                     <th>cantidad</th>
+                                    <th>Fecha salida</th>
                                     <th>Opciones</th>
                                 </tr>
                                 </thead>
@@ -74,6 +75,7 @@
                                     <th>Prodcuto</th>
                                     <th>Cantidad</th>
                                     <th>Opciones</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>

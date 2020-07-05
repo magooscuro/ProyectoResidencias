@@ -25,11 +25,14 @@
           },
           {
               "data":"cantidad"
+          },
+          {
+              "data":"created_at"
           }
       ],
       rowId:"id",
         "columnDefs":[{
-            "targets":3,
+            "targets":4,
             "data":null,
             "defaultContent":"<button type='button' id='btnEditarModal' class='btn btn-warning' title='Editar' data-toggle='modal' data-target='#modalEditar'><i class='fas fa-edit'></i></button>"
         }],
