@@ -3,7 +3,7 @@
 
     var table = $("#tabla").DataTable({
       "ajax":{
-        "url":"http://127.0.0.1:8000/api/unidades",
+        "url":"/api/unidades",
         "dataSrc":"",
         error:function(data){
         alert("No hay conexion");
@@ -55,10 +55,10 @@
       $.ajax({
         type:"POST",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/unidades',
+        url: '/api/unidades',
         ContentType: "application/json",
         beforeSend:function(){
-          $('#Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+          $('#Agregar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -88,10 +88,10 @@
 
       $.ajax({
         type:"Delete",
-        url: 'http://127.0.0.1:8000/api/unidades/'+id,
+        url: '/api/unidades/'+id,
         ContentType: "application/json",
         beforeSend:function(){
-          $('#Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+          $('#Eliminar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -135,10 +135,10 @@
       $.ajax({
         type:"PUT",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/unidades/'+id,
+        url: '/api/unidades/'+id,
         ContentType: "application/json",
         beforeSend:function(){
-          $('#Editar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+          $('#Editar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);

@@ -1,9 +1,10 @@
+
  var id=-1;
  $(function () {
      document.getElementById("imgl").style.visibility= "hidden";
     var table = $("#tabla").DataTable({
       "ajax":{
-        "url":"/api/es",
+        "url":"/public/api/es",
         "dataSrc":"",
         error:function(data){
         alert("No hay conexion");
@@ -72,7 +73,7 @@
         $.ajax({
             type:"GET",
             async : false,
-            url:'/api/productos/'+producto,
+            url:'/public/api/productos/'+producto,
             ContentType: "application/json",
             success:function(data) {
                 $(data).each(function(i, v){ // indice, valor
@@ -98,10 +99,10 @@
             $.ajax({
                 type: "POST",
                 data: obj,
-                url: '/api/es',
+                url: '/public/api/es',
                 ContentType: "application/json",
                 beforeSend: function () {
-                    $('#Agregar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                    $('#Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
                 },
                 success: function (data) {
                     table.ajax.reload();
@@ -125,7 +126,7 @@
             $.ajax({
                 type:"PUT",
                 data: dataprod,
-                url: '/api/productos/'+producto,
+                url: '/public/api/productos/'+producto,
                 ContentType: "application/json"
             }).fail(function($xhr){
                 var  data = $xhr.responseJSON;
@@ -143,7 +144,7 @@
 
          $.ajax({
              type:"GET",
-             url:'/api/empleados',
+             url:'/public/api/empleados',
              ContentType: "application/json",
              success:function(data) {
                  salida.find('option').remove();
@@ -155,7 +156,7 @@
 
          $.ajax({
              type:"GET",
-             url:'/api/productos',
+             url:'http://.0.0.1:8000/api/productos',
              ContentType: "application/json",
              success:function(data) {
                  producto.find('option').remove();
@@ -182,7 +183,7 @@
         var productol = $(".Addeproducto select");
         $.ajax({
             type:"GET",
-            url:'/api/empleados',
+            url:'http://127.0.0.1:8000/api/empleados',
             ContentType: "application/json",
             success:function(data) {
                 salidal.find('option').remove();
@@ -190,7 +191,6 @@
                     if(v.id == salida)
                         salidal.append('<option value="' + v.id + '" selected>' + v.nombres+""+v.apellidos + '</option>');
                     else
-
                         salidal.append('<option value="' + v.id + '">' + v.nombres+" "+v.apellidos + '</option>');
                 })
             }
@@ -198,7 +198,7 @@
 
         $.ajax({
             type:"GET",
-            url:'/api/productos',
+            url:'http://127.0.0.1:8000/api/productos',
             ContentType: "application/json",
             success:function(data) {
                 productol.find('option').remove();
@@ -229,7 +229,7 @@
         $.ajax({
             type:"GET",
             async : false,
-            url:'/api/productos/'+prod,
+            url:'http://127.0.0.1:8000/api/productos/'+prod,
             ContentType: "application/json",
             success:function(data) {
                 $(data).each(function(i, v){ // indice, valor
@@ -246,7 +246,7 @@
             $.ajax({
                 type: "PUT",
                 data: dataprod,
-                url: '/api/productos/' + prod,
+                url: 'http://127.0.0.1:8000/api/productos/' + prod,
                 ContentType: "application/json"
             }).fail(function ($xhr) {
                 var data = $xhr.responseJSON;
@@ -254,7 +254,7 @@
         }
         $.ajax({
             type:"Delete",
-            url: '/api/es/'+id,
+            url: 'http://127.0.0.1:8000/api/es/'+id,
             ContentType: "application/json",
         }).fail(function($xhr){
             var  data = $xhr.responseJSON;
@@ -266,7 +266,7 @@
         $.ajax({
             type:"GET",
             async : false,
-            url:'/api/productos/'+producto,
+            url:'http://127.0.0.1:8000/api/productos/'+producto,
             ContentType: "application/json",
             success:function(data) {
                 $(data).each(function(i, v){ // indice, valor
@@ -293,10 +293,10 @@
             $.ajax({
                 type: "POST",
                 data: obj,
-                url: '/api/es',
+                url: 'http://127.0.0.1:8000/api/es',
                 ContentType: "application/json",
                 beforeSend: function () {
-                    $('#Actualizar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                    $('#Actualizar').html('<div class="loading"><img src=".{{./../img/loader.gif}}" alt="loading" /><br/>Un momento, por favor...</div>');
                 },
                 success: function (data) {
                     table.ajax.reload();
@@ -320,7 +320,7 @@
             $.ajax({
                 type:"PUT",
                 data: dataprod2,
-                url: '/api/productos/'+producto,
+                url: 'http://127.0.0.1:8000/api/productos/'+producto,
                 ContentType: "application/json"
             }).fail(function($xhr){
                 var  data = $xhr.responseJSON;
@@ -339,7 +339,7 @@
 
      var table2 = $("#tabla2").DataTable({
          "ajax":{
-             "url":"/api/esh",
+             "url":"http://127.0.0.1:8000/api/esh",
              "dataSrc":"",
              error:function(data){
                  alert("No hay conexion");
@@ -405,7 +405,7 @@
          $.ajax({
              type:"GET",
              async : false,
-             url:'/api/es/'+id,
+             url:'http://127.0.0.1:8000/api/es/'+id,
              ContentType: "application/json",
              beforeSend: function () {
 
@@ -421,7 +421,7 @@
              type:"PUT",
              async : false,
              data: data2,
-             url: '/api/es/'+id,
+             url: 'http://127.0.0.1:8000/api/es/'+id,
              ContentType: "application/json",
              beforeSend: function () {
                  $('#modalRegreso').modal('hide');
@@ -443,7 +443,7 @@
          $.ajax({
              type:"GET",
              async : false,
-             url:'/api/productos/'+data2.producto_id,
+             url:'http://127.0.0.1:8000/api/productos/'+data2.producto_id,
              ContentType: "application/json",
              beforeSend: function () {
                  $('#modalRegreso').modal('hide');
@@ -461,7 +461,7 @@
              type:"PUT",
              async : false,
              data: data3,
-             url: '/api/productos/'+data2.producto_id,
+             url: 'http://127.0.0.1:8000/api/productos/'+data2.producto_id,
              ContentType: "application/json",
              success:function (data) {
                  $('#modalRegreso').modal('hide');

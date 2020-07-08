@@ -1,7 +1,7 @@
 $(function () {
     var table = $("#tabla").DataTable({
         "ajax":{
-            "url":"http://127.0.0.1:8000/api/empleados",
+            "url":"/api/empleados",
             "dataSrc":"",
             error:function(data){
                 alert("No hay conexion");
@@ -75,10 +75,10 @@ $(function () {
         $.ajax({
             type:"POST",
             data: obj,
-            url: 'http://127.0.0.1:8000/api/empleados',
+            url: '/api/empleados',
             ContentType: "application/json",
             beforeSend:function(){
-                $('.Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                $('.Agregar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
             },
             success:function(data){
                 console.log(data);
@@ -112,10 +112,10 @@ $(function () {
 
         $.ajax({
             type:"Delete",
-            url: 'http://127.0.0.1:8000/api/empleados/'+id,
+            url: '/api/empleados/'+id,
             ContentType: "application/json",
             beforeSend:function(){
-                $('.Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                $('.Eliminar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
             },
             success:function(data){
                 console.log(data);
@@ -172,10 +172,10 @@ console.log(obj);
         $.ajax({
             type:"PUT",
             data: obj,
-            url: 'http://127.0.0.1:8000/api/empleados/'+id,
+            url: '/api/empleados/'+id,
             ContentType: "application/json",
             beforeSend:function(){
-                $('.Actualizar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+                $('.Actualizar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
             },
             success:function(data){
                 console.log(data);

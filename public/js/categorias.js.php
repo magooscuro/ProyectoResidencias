@@ -4,7 +4,7 @@
 
     var table = $("#tabla").DataTable({
       "ajax":{
-        "url":"http://127.0.0.1:8000/api/subcategorias",
+        "url":"/api/subcategorias",
         "dataSrc":"",
         error:function(data){
         alert("No hay conexion");
@@ -60,10 +60,10 @@
       $.ajax({
         type:"POST",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/subcategorias',
+        url: '/api/subcategorias',
         ContentType: "application/json",
         beforeSend:function(){
-          $('#Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+          $('#Agregar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -93,10 +93,10 @@
 
       $.ajax({
         type:"Delete",
-        url: 'http://127.0.0.1:8000/api/subcategorias/'+id,
+        url: '/api/subcategorias/'+id,
         ContentType: "application/json",
         beforeSend:function(){
-          $('#Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+          $('#Eliminar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           console.log(data);
@@ -122,7 +122,7 @@
 
         $.ajax({
             type:"GET",
-            url:'http://127.0.0.1:8000/api/categorias',
+            url:'/api/categorias',
             ContentType: "application/json",
             success:function(data) {
                 categorias.find('option').remove();
@@ -147,7 +147,7 @@
 
       $.ajax({
          type:"GET",
-          url:'http://127.0.0.1:8000/api/categorias',
+          url:'/api/categorias',
           ContentType: "application/json",
           success:function(data) {
              categorias.find('option').remove();
@@ -177,10 +177,10 @@
       $.ajax({
         type:"PUT",
         data: obj,
-        url: 'http://127.0.0.1:8000/api/subcategorias/'+id,
+        url: '/api/subcategorias/'+id,
         ContentType: "application/json",
         beforeSend:function(){
-          $('#Editar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
+          $('#Editar').html('<div class="loading"><img src="/img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
         },
         success:function(data){
           table.ajax.reload();

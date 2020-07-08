@@ -3,7 +3,7 @@ $(function () {
 
     var table = $("#tabla").DataTable({
         "ajax":{
-            "url":"/api/productos",
+            "url":"/public/api/productos",
             "dataSrc":"",
             error:function(data){
                 alert("No hay conexion");
@@ -90,7 +90,7 @@ $(function () {
         $.ajax({
             type:"POST",
             data: obj,
-            url: '/api/productos',
+            url: '/public/api/productos',
             ContentType: "application/json",
             beforeSend:function(){
                 $('.Agregar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
@@ -125,7 +125,7 @@ $(function () {
 
         $.ajax({
             type:"Delete",
-            url: '/api/productos/'+id,
+            url: '/public/api/productos/'+id,
             ContentType: "application/json",
             beforeSend:function(){
                 $('.Eliminar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');
@@ -157,7 +157,7 @@ $(function () {
 
         $.ajax({
             type:"GET",
-            url:'/api/almacenes',
+            url:'/public/api/almacenes',
             ContentType: "application/json",
             success:function(data) {
                 almacen.find('option').remove();
@@ -169,7 +169,7 @@ $(function () {
 
         $.ajax({
             type:"GET",
-            url:'/api/subcategorias',
+            url:'/public/api/subcategorias',
             ContentType: "application/json",
             success:function(data) {
                 subcategoria.find('option').remove();
@@ -181,7 +181,7 @@ $(function () {
 
         $.ajax({
             type:"GET",
-            url:'/api/ubicaciones',
+            url:'/public/api/ubicaciones',
             ContentType: "application/json",
             success:function(data) {
                 ubicacion.find('option').remove();
@@ -193,7 +193,7 @@ $(function () {
 
         $.ajax({
             type:"GET",
-            url:'/api/unidades',
+            url:'/public/api/unidades',
             ContentType: "application/json",
             success:function(data) {
                 unidad.find('option').remove();
@@ -226,7 +226,7 @@ $(function () {
 
         $.ajax({
             type:"GET",
-            url:'/api/almacenes',
+            url:'/public/api/almacenes',
             ContentType: "application/json",
             success:function(data) {
                 almacen.find('option').remove();
@@ -241,7 +241,7 @@ $(function () {
 
         $.ajax({
             type:"GET",
-            url:'/api/subcategorias',
+            url:'/public/api/subcategorias',
             ContentType: "application/json",
             success:function(data) {
                 subcategoria.find('option').remove();
@@ -256,7 +256,7 @@ $(function () {
 
         $.ajax({
             type:"GET",
-            url:'/api/ubicaciones',
+            url:'/public/api/ubicaciones',
             ContentType: "application/json",
             success:function(data) {
                 ubicacion.find('option').remove();
@@ -271,7 +271,7 @@ $(function () {
 
         $.ajax({
             type:"GET",
-            url:'/api/unidades',
+            url:'//api/unidades',
             ContentType: "application/json",
             success:function(data) {
                 unidad.find('option').remove();
@@ -308,7 +308,7 @@ $(function () {
         $.ajax({
             type:"PUT",
             data: obj,
-            url: '/api/productos/'+id,
+            url: 'http://127.0.0.1:8000/api/productos/'+id,
             ContentType: "application/json",
             beforeSend:function(){
                 $('.Actualizar').html('<div class="loading"><img src="../../img/loader.gif" alt="loading" /><br/>Un momento, por favor...</div>');

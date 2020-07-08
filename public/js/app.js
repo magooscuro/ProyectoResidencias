@@ -6860,7 +6860,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.5.1
+ * jQuery JavaScript Library v3.5.0
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -6870,7 +6870,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2020-05-04T22:49Z
+ * Date: 2020-04-10T15:07Z
  */
 ( function( global, factory ) {
 
@@ -7008,7 +7008,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.5.1",
+	version = "3.5.0",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -11105,7 +11105,7 @@ Data.prototype = {
 
 		// If not, create one
 		if ( !value ) {
-			value = {};
+			value = Object.create( null );
 
 			// We can accept data for non-element nodes in modern browsers,
 			// but we should not, see #8335.
@@ -38342,7 +38342,7 @@ var render = function() {
         return _c("div", { key: post.title, staticClass: "card mt-3" }, [
           _c("img", {
             staticClass: "card-img-top",
-            attrs: { src: "/images/" + post.image }
+            attrs: { src: "./images/" + post.image }
           }),
           _vm._v(" "),
           _c(
@@ -38617,7 +38617,7 @@ function normalizeComponent (
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /*!
-  * vue-router v3.3.1
+  * vue-router v3.3.4
   * (c) 2020 Evan You
   * @license MIT
   */
@@ -40643,7 +40643,9 @@ function createNavigationRedirectedError (from, to) {
     from,
     to,
     NavigationFailureType.redirected,
-    ("Redirected from \"" + (from.fullPath) + "\" to \"" + (stringifyRoute(to)) + "\" via a navigation guard.")
+    ("Redirected when going from \"" + (from.fullPath) + "\" to \"" + (stringifyRoute(
+      to
+    )) + "\" via a navigation guard.")
   )
 }
 
@@ -40681,9 +40683,6 @@ function createRouterError (from, to, type, message) {
   error.to = to;
   error.type = type;
 
-  var newStack = error.stack.split('\n');
-  newStack.splice(1, 2); // remove 2 last useless calls
-  error.stack = newStack.join('\n');
   return error
 }
 
@@ -40766,9 +40765,17 @@ History.prototype.transitionTo = function transitionTo (
       }
       if (err && !this$1.ready) {
         this$1.ready = true;
-        this$1.readyErrorCbs.forEach(function (cb) {
-          cb(err);
-        });
+        // Initial redirection should still trigger the onReady onSuccess
+        // https://github.com/vuejs/vue-router/issues/3225
+        if (!isRouterError(err, NavigationFailureType.redirected)) {
+          this$1.readyErrorCbs.forEach(function (cb) {
+            cb(err);
+          });
+        } else {
+          this$1.readyCbs.forEach(function (cb) {
+            cb(route);
+          });
+        }
       }
     }
   );
@@ -40794,10 +40801,13 @@ History.prototype.confirmTransition = function confirmTransition (route, onCompl
     }
     onAbort && onAbort(err);
   };
+  var lastRouteIndex = route.matched.length - 1;
+  var lastCurrentIndex = current.matched.length - 1;
   if (
     isSameRoute(route, current) &&
     // in the case the route map has been dynamically appended to
-    route.matched.length === current.matched.length
+    lastRouteIndex === lastCurrentIndex &&
+    route.matched[lastRouteIndex] === current.matched[lastCurrentIndex]
   ) {
     this.ensureURL();
     return abort(createNavigationDuplicatedError(current, route))
@@ -40869,7 +40879,7 @@ History.prototype.confirmTransition = function confirmTransition (route, onCompl
     var queue = enterGuards.concat(this$1.router.resolveHooks);
     runQueue(queue, iterator, function () {
       if (this$1.pending !== route) {
-        return abort()
+        return abort(createNavigationCancelledError(current, route))
       }
       this$1.pending = null;
       onComplete(route);
@@ -41615,7 +41625,7 @@ function createHref (base, fullPath, mode) {
 }
 
 VueRouter.install = install;
-VueRouter.version = '3.3.1';
+VueRouter.version = '3.3.4';
 
 if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
@@ -53710,7 +53720,7 @@ function MyCustomUploadAdapterPlugin(editor) {
 } // ...
 
 
-_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_2___default.a.create(document.querySelector("#content"), {
+_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_2___default.a.create(document.querySelector("#contentt"), {
   extraPlugins: [MyCustomUploadAdapterPlugin]
 }).then(function (editor) {})["catch"](function (error) {
   console.error(error.stack);
@@ -54463,8 +54473,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\ProyectoResidencias\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\ProyectoResidencias\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/ProyectoResidencias/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/ProyectoResidencias/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -26,7 +26,7 @@ function MyCustomUploadAdapterPlugin( editor ) {
 
  
 
-ClassicEditor.create(document.querySelector("#content"),{
+ClassicEditor.create(document.querySelector("#contentt"),{
    extraPlugins: [ MyCustomUploadAdapterPlugin ],
 })
     .then(editor => {})

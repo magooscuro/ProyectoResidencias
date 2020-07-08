@@ -73,7 +73,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview ">
-                    <a href="{{ action('inicioController@index') }}" class="nav-link">
+                    <a href="{{ action('InicioController@index') }}" class="nav-link">
                         <i class="nav-icon fas fa-arrows-alt-h"></i>
                         <p>
                             Salidas
