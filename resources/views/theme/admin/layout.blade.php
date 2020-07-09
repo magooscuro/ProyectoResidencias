@@ -58,7 +58,6 @@
                                     <th>Prodcuto</th>
                                     <th>cantidad</th>
                                     <th>Fecha salida</th>
-                                    <th>Opciones</th>
                                 </tr>
                                 </thead>
                                 <tbody>

@@ -30,11 +30,6 @@
           }
       ],
       rowId:"id",
-        "columnDefs":[{
-            "targets":4,
-            "data":null,
-            "defaultContent":"<button type='button' id='btnEditarModal' class='btn btn-warning' title='Editar' data-toggle='modal' data-target='#modalEditar'><i class='fas fa-edit'></i></button>"
-        }],
       responsive: true,
       "language": {
         "lengthMenu": "Se muestran _MENU_ resultados por pagina",

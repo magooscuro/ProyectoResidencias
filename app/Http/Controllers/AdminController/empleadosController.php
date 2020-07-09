@@ -13,6 +13,10 @@ class empleadosController extends Controller
     }
     public function index()
     {
-        return view('theme/admin/empleados');
+        if(auth()->user()->rol->key == 'inventario'){
+            return view('theme/admin/empleados');
+        }elseif(auth()->user()->rol->key == 'user') {
+            return view('theme/user/empleados');
+        }
     }
 }

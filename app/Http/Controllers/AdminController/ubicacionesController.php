@@ -13,7 +13,10 @@ class ubicacionesController extends Controller
     }
     public function index()
     {
-        return view('theme/admin/ubicaciones');
-        //
+        if(auth()->user()->rol->key == 'inventario'){
+            return view('theme/admin/ubicaciones');
+        }elseif(auth()->user()->rol->key == 'user') {
+            return view('theme/user/ubicaciones');
+        }
     }
 }

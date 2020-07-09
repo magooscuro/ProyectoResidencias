@@ -41,10 +41,8 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-        if (auth()->user()->rol->key == 'inventario') {
+        if (auth()->user()->rol->key == 'inventario' || auth()->user()->rol->key == 'user') {
             return '/admin';
-            
-            
         }elseif (auth()->user()->rol->key == 'admin') {
             return '/dashboard/post';
         }

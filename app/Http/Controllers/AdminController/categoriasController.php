@@ -13,7 +13,11 @@ class categoriasController extends Controller
     }
     public function index()
     {
-        return view('theme/admin/categorias');
-        //
+        if(auth()->user()->rol->key == 'inventario'){
+            return view('theme/admin/categorias');
+        }elseif(auth()->user()->rol->key == 'user') {
+            return view('theme/user/categorias');
+        }
+
     }
 }

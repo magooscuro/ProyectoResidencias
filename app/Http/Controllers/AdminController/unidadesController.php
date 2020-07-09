@@ -13,7 +13,10 @@ class unidadesController extends Controller
     }
     public function index()
     {
-        return view('theme/admin/unidades');
-        //
+        if(auth()->user()->rol->key == 'inventario'){
+            return view('theme/admin/unidades');
+        }elseif(auth()->user()->rol->key == 'user') {
+            return view('theme/user/unidades');
+        }
     }
 }

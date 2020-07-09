@@ -13,7 +13,11 @@ class almacenesController extends Controller
     }
     public function index()
     {
-        return view('theme/admin/almacenes');
-        //
+
+        if(auth()->user()->rol->key == 'inventario'){
+            return view('theme/admin/almacenes');
+        }elseif(auth()->user()->rol->key == 'user'){
+            return view('theme/user/almacenes');
+        }
     }
 }

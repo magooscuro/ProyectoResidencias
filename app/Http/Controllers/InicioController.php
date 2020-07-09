@@ -17,7 +17,13 @@ class InicioController extends Controller
      */
     public function index()
     {
-        return view('theme/admin/layout');
+
+        if(auth()->user()->rol->key == 'inventario'){
+            return view('theme/admin/layout');
+        }elseif(auth()->user()->rol->key == 'user'){
+            return view('theme/user/layout');
+        }
+
         //
     }
 

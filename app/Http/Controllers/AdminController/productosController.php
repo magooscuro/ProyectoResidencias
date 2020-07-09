@@ -19,7 +19,11 @@ class productosController extends Controller
      */
     public function index()
     {
-        return view('theme/admin/productos');
+        if(auth()->user()->rol->key == 'inventario'){
+            return view('theme/admin/productos');
+        }elseif(auth()->user()->rol->key == 'user') {
+            return view('theme/user/productos');
+        }
         //
     }
 }
