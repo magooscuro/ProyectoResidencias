@@ -53,7 +53,7 @@ class UserController extends Controller
         User::create(
             [
                 'name' => $request['name'],
-                'rol_id' => 1, //con el 1 se crea un usuario administrador 
+                'rol_id' => 4, //con el 1 se crea un usuario administrador 
                 'surname' => $request['surname'],
                 'email' => $request['email'],
                 'password' => Hash::make($request['password']),
@@ -103,6 +103,7 @@ class UserController extends Controller
                 'name' => $request['name'],
                 'surname' => $request['surname'],
                 'email' => $request['email'],
+		'password' => Hash::make($request['password']),
                 
             ]
         ); 

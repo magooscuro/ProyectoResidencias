@@ -8,7 +8,8 @@
   </button>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+  <router-link class="navbar-brand" to="">             @auth             {{ auth()->user()->name}}             @endauth     </router-link>      
+<li class="nav-item">
                 <a href="{{ route('contact.index')}}" class="nav-link">Contacto</a>
             </li>
       <li class="nav-item dropdown">
